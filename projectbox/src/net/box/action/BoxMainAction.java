@@ -30,13 +30,6 @@ import net.box.db.BoxMusicBean;
 		
 		List<BoxGeneralBoardBean> generalboardlist = boxdao.getGeneralBoardList();
 		//generalboardlist = generalboardlist.parallelStream().filter(i -> i != null).collect(Collectors.toList());
-
-		
-		musiclist.remove(29);
-		
-		for(BoxMusicBean v : musiclist){
-			System.out.println(v.getTitle());
-		}
 		
 		request.setAttribute("musiclist", musiclist);
 		request.setAttribute("concertlist", concertlist);

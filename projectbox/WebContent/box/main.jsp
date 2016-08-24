@@ -100,7 +100,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">추천곡
                     <small>
-                    	<a href="#navigation-main" aria-label="Skip to main navigation">
+                    	<a href="box/Temp.jsp" aria-label="Skip to main navigation">
 						  <i class="fa fa-bars" aria-hidden="true"></i>
 						</a>
 					</small>
