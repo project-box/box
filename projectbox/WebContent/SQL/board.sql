@@ -1,29 +1,21 @@
 select * from tab;
-select * from board222;
+select * from seq;
+select * from generalboard;
 
-CREATE TABLE BOARD222(
-	BOARD_NUM NUMBER,
-	BOARD_NAME VARCHAR2(20),
-	BOARD_PASS VARCHAR2(15),
-	BOARD_SUBJECT VARCHAR2(50),
-	BOARD_CONTENT VARCHAR2(2000),
-	BOARD_FILE VARCHAR2(50),
-	BOARD_RE_REF NUMBER,
-	BOARD_RE_LEV NUMBER,
-	BOARD_RE_SEQ NUMBER,
-	BOARD_READCOUNT NUMBER,
-	BOARD_DATE DATE,
-	PRIMARY KEY(BOARD_NUM)
+create table generalboard(
+	id number primary key,
+	userid varchar2(20) not null references users(id),	
+	name varchar2(20),
+	title varchar2(50),
+	content varchar2(2000),
+	readcount number default 0,
+	registerdate date	
 );
 
-create sequence board222_seq
-start with 1
-increment by 1
-nocache;
+create sequence generalboard_seq;
 
-drop table board222 purge;
-select * from tab;
-select * from seq;
-select * from board222;
+insert into generalboard values
+(generalboard_seq.nextval,'dev','dev','free','content',0,sysdate);
 
-delete from board222;
+
+drop table generalboard purge;

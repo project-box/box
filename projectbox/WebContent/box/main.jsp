@@ -150,7 +150,7 @@
 			        <th>번호</th>
 			        <th>제목</th>
 			        <th>이름</th>
-			        <th>등록일</th>
+			        <th>등록일</th>			      
 			      </tr>
 			    </thead>
 			    <tbody>
