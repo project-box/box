@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">BOX</a>
+                <a class="navbar-brand" href="main.box">BOX</a>
                 
                 <ul class="nav navbar-nav">
                     <li>
@@ -100,7 +100,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">추천곡
                     <small>
-                    	<a href="box/Temp.jsp" aria-label="Skip to main navigation">
+                    	<a href="recommendMusicList.box" aria-label="Skip to main navigation">
 						  <i class="fa fa-bars" aria-hidden="true"></i>
 						</a>
 					</small>

@@ -34,11 +34,18 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet
 		System.out.println("command=" + command);
 
 		if (command.equals("/frontpage.box")) {
-			forward = new ActionForward();
+			/*forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("./board/qna_board_write.jsp");
+			forward.setPath("./board/qna_board_write.jsp");*/
 		} else if (command.equals("/main.box")) {
 			action = new BoxMainAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/recommendMusicList.box")){
+			action = new BoxRecommendMusicListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
