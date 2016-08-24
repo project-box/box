@@ -31,7 +31,7 @@ public class BoxDAOImpl {
 	public List<BoxMusicBean> getMusicList() throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<BoxMusicBean>  list = session.selectList("box.music_list");
+		List<BoxMusicBean> list = session.selectList("box.music_list");
 	    return list;
 	}
 	
@@ -39,7 +39,7 @@ public class BoxDAOImpl {
 	public List<BoxConcertBean> getConcertList() throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<BoxConcertBean>  list = session.selectList("box.concert_list");
+		List<BoxConcertBean> list = session.selectList("box.concert_list");
 	    return list;
 	}
 	
@@ -47,7 +47,7 @@ public class BoxDAOImpl {
 	public List<BoxGeneralBoardBean> getGeneralBoardList() throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<BoxGeneralBoardBean>  list = session.selectList("board.generalboard_list");
+		List<BoxGeneralBoardBean> list = session.selectList("board.generalboard_list");
 	    return list;
 	}
 }
