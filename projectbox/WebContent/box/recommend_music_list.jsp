@@ -46,7 +46,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a class="page-scroll" href="#portfolio">
+                        	<i class="fa fa-search" aria-hidden="true" style="font-size: 20px;"></i>
+						</a>
                     </li>
                     <li>
                     	<a href="#navigation-main">

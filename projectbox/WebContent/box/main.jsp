@@ -16,6 +16,8 @@
     <!-- font awesome -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	
@@ -49,12 +51,25 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a href="#portfolio">
+                        	<i class="fa fa-search" aria-hidden="true" style="font-size: 20px;"></i>
+						</a>
                     </li>
                     <li>
-                    	<a href="#navigation-main">
-                       		<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
-                        </a>
+                    <!-- <a>
+                    	<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
+                   	</a> -->
+                      <div class="dropdown boxcenter">
+					    <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
+                   			<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
+                        </button>
+					    <span class="caret"></span></button>
+					    <ul class="dropdown-menu">
+					      <li><a href="#">회원가입</a></li>
+					      <li><a href="#">로그인</a></li>
+					      <li><a href="#">마이페이지</a></li>
+					    </ul>
+					  </div>
                     </li>
                 </ul>
             </div>
