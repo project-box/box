@@ -31,9 +31,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">BOX</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="#">About</a>
@@ -43,6 +41,20 @@
                     </li>
                     <li>
                         <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li>
+                    	<a href="#navigation-main">
+                       		<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -70,7 +82,7 @@
 					<a href="#">
 	                    <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
 	                    
-	                    <img class="img-responsive" src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="" >
+	                    <img class="img-responsive img-center" src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="" >
 	                </a>
 	                <div class="well well-sm">
 						<c:out value="${b.title}"/><br>
@@ -98,7 +110,7 @@
             <c:forEach var="b" items="${musiclist}">
 				<div class="col-md-3 portfolio-item">
 					<a href="#">
-	                    <img class="img-responsive" src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="" >
+	                    <img class="img-responsive img-center" src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="" >
 	                </a>
 					<div class="well well-sm">
 						<c:out value="${b.title}"/><br>
@@ -123,7 +135,7 @@
 				<div class="col-md-3 portfolio-item">
 					<a href="#">
 	                    <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
-	                    <img class="img-responsive" src="<c:url value='/img/${b.posterfilepath}'/>" alt="" >
+	                    <img class="img-responsive img-center" src="<c:url value='/img/${b.posterfilepath}'/>" alt="" >
 	                </a>
 					<div class="well well-sm">
 						<c:out value="${b.title}"/><br>
