@@ -43,6 +43,7 @@
 
 	<mappers>
 		<mapper resource="box.xml" />
+		<mapper resource="board.xml" /> <!-- freeboard -->
 	</mappers>
 
 </configuration>
