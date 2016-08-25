@@ -16,7 +16,6 @@ import net.box.db.BoxMusicBean;
  public class BoxMainAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
-//		BoardDAO boarddao=new BoardDAO();
 		BoxDAOImpl boxdao=new BoxDAOImpl();
 		
 		//List<BoxMusicBean> musiclist = boxdao.getMusicList();
