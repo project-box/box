@@ -17,11 +17,10 @@ import net.board.action.BoardReplyAction;
 import net.board.action.BoardReplyView;
 
 @WebServlet("*.box")
-public class BoxFrontController extends javax.servlet.http.HttpServlet
-		implements javax.servlet.Servlet {
+public class BoxFrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 
-	protected void doProcess(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
@@ -34,9 +33,10 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet
 		System.out.println("command=" + command);
 
 		if (command.equals("/frontpage.box")) {
-			/*forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./board/qna_board_write.jsp");*/
+			/*
+			 * forward = new ActionForward(); forward.setRedirect(false);
+			 * forward.setPath("./board/qna_board_write.jsp");
+			 */
 		} else if (command.equals("/main.box")) {
 			action = new BoxMainAction();
 			try {
@@ -44,33 +44,35 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/recommendMusicList.box")){
+		} else if (command.equals("/recommendMusicList.box")) {
 			action = new BoxRecommendMusicListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/mypage.box")) {
+			forward = new ActionForward(); forward.setRedirect(false);
+			forward.setPath("./box/mypage.jsp");
 		}
 
 		if (forward != null) {
 			if (forward.getRedirect()) { // true
 				response.sendRedirect(forward.getPath());
 			} else { // false 값전달이 가능함
-				RequestDispatcher dispatcher = request
-						.getRequestDispatcher(forward.getPath());
+				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}
 		}
 	}// doprocess() end
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doProcess(request, response);
 	}
 }
