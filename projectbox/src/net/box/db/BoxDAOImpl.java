@@ -35,6 +35,14 @@ public class BoxDAOImpl {
 	    return list;
 	}
 	
+	/* 최신 곡 목록 */
+	public List<BoxMusicBean> getRecentMusicList(int count) throws SQLException {
+		SqlSession session=null;
+		session = getSession();
+		List<BoxMusicBean> list = session.selectList("box.recent_music_list", count);
+	    return list;
+	}
+	
 	/* 공연 목록 */
 	public List<BoxConcertBean> getConcertList() throws SQLException {
 		SqlSession session=null;
