@@ -51,7 +51,9 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+		} else if (command.equals("/NewmusicWrite.box")) {
+			forward = new ActionForward(); forward.setRedirect(false);
+			forward.setPath("./box/New_music_write.jsp");
 		}else if(command.equals("/BoxNewmusicAddAction.box")){
 			action = new BoxNewmusicAddAction();
 			try {
@@ -81,6 +83,14 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			forward = new ActionForward(); forward.setRedirect(false);
 			forward.setPath("./box/login.jsp");
 
+		} else if(command.equals("/loginAction.box")){
+			action = new BoxLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
 		
 
@@ -92,7 +102,8 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				dispatcher.forward(request, response);
 			}
 		}
-	}// doprocess() end
+	}// doprocess()
+																															// end
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
