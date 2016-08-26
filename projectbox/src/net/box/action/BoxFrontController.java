@@ -52,23 +52,24 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 		} else if (command.equals("/NewmusicWrite.box")) {
-			forward = new ActionForward(); forward.setRedirect(false);
+			forward = new ActionForward();
+			forward.setRedirect(false);
 			forward.setPath("./box/New_music_write.jsp");
-		}else if(command.equals("/BoxNewmusicAddAction.box")){
+		} else if (command.equals("/BoxNewmusicAddAction.box")) {
 			action = new BoxNewmusicAddAction();
 			try {
-					forward = action.execute(request, response);
+				forward = action.execute(request, response);
 			} catch (Exception e) {
-					e.printStackTrace();
-			}		
-		}else if(command.equals("/NewMusicList.box")){
-				action = new BoxNewMusicListAction();
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		}else if(command.equals("/NewmusicDetailAction.box")){
+				e.printStackTrace();
+			}
+		} else if (command.equals("/NewMusicList.box")) {
+			action = new BoxNewMusicListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/NewmusicDetailAction.box")) {
 			action = new BoxNewMusicDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -76,7 +77,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
-		} else if(command.equals("/BoxNewMusicDetail.box")){
+		} else if (command.equals("/BoxNewMusicDetail.box")) {
 			action = new BoxNewMusicDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -85,13 +86,15 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			}
 
 		} else if (command.equals("/mypage.box")) {
-			forward = new ActionForward(); forward.setRedirect(false);
+			forward = new ActionForward();
+			forward.setRedirect(false);
 			forward.setPath("./box/mypage.jsp");
-		} else if(command.equals("/login.box")){
-			forward = new ActionForward(); forward.setRedirect(false);
+		} else if (command.equals("/login.box")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
 			forward.setPath("./box/login.jsp");
 
-		} else if(command.equals("/loginAction.box")){
+		} else if (command.equals("/loginAction.box")) {
 			action = new BoxLoginAction();
 			try {
 				forward = action.execute(request, response);
@@ -99,8 +102,15 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
+		} else if (command.equals("/ConcertDetail.box")) {
+			action = new BoxConcertDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
-		
 
 		if (forward != null) {
 			if (forward.getRedirect()) { // true
@@ -111,7 +121,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			}
 		}
 	}// doprocess()
-																															// end
+		// end
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
