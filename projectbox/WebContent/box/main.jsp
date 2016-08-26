@@ -66,7 +66,7 @@
 					    <span class="caret"></span></button>
 					    <ul class="dropdown-menu">
 					      <li><a href="#">회원가입</a></li>
-					      <li><a href="#">로그인</a></li>
+					      <li><a href="login.box">로그인</a></li>
 					      <li><a href="mypage.box">마이페이지</a></li>
 					    </ul>
 					  </div>

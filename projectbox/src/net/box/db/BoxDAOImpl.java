@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -57,5 +56,12 @@ public class BoxDAOImpl {
 		session = getSession();
 		List<BoxGeneralBoardBean> list = session.selectList("board.generalboard_list");
 	    return list;
+	}
+	
+	/* 유저조회 */
+	public BoxUserBean getUserInfo(String userId) throws SQLException {
+		SqlSession session=null;
+		session = getSession();
+		return (BoxUserBean)session.selectOne("box.user_info", userId);
 	}
 }
