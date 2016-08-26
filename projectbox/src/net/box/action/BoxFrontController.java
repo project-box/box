@@ -93,13 +93,20 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+		} else if (command.equals("/ConcertDetail.box")) {
+			action = new BoxConcertDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
 
 		if (forward != null) {
 			if (forward.getRedirect()) { // true
 				response.sendRedirect(forward.getPath());
-			} else { // false 값전달이 가능함
+			} else { // false 媛믪쟾�떖�씠 媛��뒫�븿
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}

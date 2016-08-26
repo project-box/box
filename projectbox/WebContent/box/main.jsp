@@ -161,7 +161,7 @@
 
 			<c:forEach var="b" items="${concertlist}">
 				<div class="col-md-3 portfolio-item">
-					<a href="#"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
+					<a href="./ConcertDetail.box?id=${b.id}"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
 						<img class="img-responsive img-center"
 						src="<c:url value='/img/${b.posterfilepath}'/>" alt="">
 					</a>
