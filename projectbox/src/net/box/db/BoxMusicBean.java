@@ -10,7 +10,7 @@ public class BoxMusicBean {
 	private String title;
 	private String album;
 	private String lyrics;
-	private Date publishdate;
+	private Date publishdate;   // -> Date - String으로 자료형 변경
 	private String albumcoverfilepath; // -> coverfilename 이름 변경 예정
 	
 	public int getId() {

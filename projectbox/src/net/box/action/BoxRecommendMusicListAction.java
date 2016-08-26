@@ -16,11 +16,11 @@ public class BoxRecommendMusicListAction implements Action {
 //		BoardDAO boarddao=new BoardDAO();
 		BoxDAOImpl boxdao=new BoxDAOImpl();
 		
-		System.out.println("추천리스트 액션");
+		System.out.println("곡 정보 액션!!");
 		
 		ActionForward forward= new ActionForward();
 	 	forward.setRedirect(false);
- 		forward.setPath("./box/recommend_music_list.jsp");
+ 		forward.setPath("./box/New_music_detail.jsp");
  		return forward;
 	 }
 }

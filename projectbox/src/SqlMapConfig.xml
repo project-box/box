@@ -7,7 +7,7 @@
 		<typeAlias type="net.board.db.BoardBean" alias="board" />
 	</typeAliases>
 
-	<environments default="development">
+- 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
@@ -44,6 +44,7 @@
 	<mappers>
 		<mapper resource="box.xml" />
 		<mapper resource="board.xml" /> <!-- freeboard -->
+		<mapper resource="Newmusic.xml" />
 	</mappers>
 
 </configuration>
