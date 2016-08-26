@@ -51,6 +51,27 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/BoxNewmusicAddAction.box")){
+			action = new BoxNewmusicAddAction();
+			try {
+					forward = action.execute(request, response);
+			} catch (Exception e) {
+					e.printStackTrace();
+			}		
+		}else if(command.equals("/NewMusicList.box")){
+				action = new BoxNewMusicListAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}else if(command.equals("/NewMusicDetail.box")){
+			action = new BoxNewMusicDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {
