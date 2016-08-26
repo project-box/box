@@ -16,10 +16,10 @@ import net.box.db.BoxMusicBean;
  public class BoxMainAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
-//		BoardDAO boarddao=new BoardDAO();
 		BoxDAOImpl boxdao=new BoxDAOImpl();
 		
-		List<BoxMusicBean> musiclist = boxdao.getMusicList();
+		//List<BoxMusicBean> musiclist = boxdao.getMusicList();
+		List<BoxMusicBean> musiclist = boxdao.getRecentMusicList(8);
 
 		// 자바8의 람다식으로 리스트내의 null 아이템을 제거하는 코드, 화면 이미지 레이아웃이 깨지는 이유가 null
 		// 아이템인줄 알아서 아래 코드를 적용했다가 적용해도 그대로라 주석처리함. 

@@ -27,6 +27,7 @@
 		<typeAlias type="net.box.db.BoxMusicBean" alias="music" />
 		<typeAlias type="net.box.db.BoxConcertBean" alias="concert" />
 		<typeAlias type="net.box.db.BoxGeneralBoardBean" alias="generalboard" />
+		<typeAlias type="net.box.db.BoxUserBean" alias="user" />
 	</typeAliases>
 
 	<environments default="development">
