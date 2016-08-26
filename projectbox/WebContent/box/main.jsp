@@ -86,7 +86,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">최신곡
                     <small>
-                    	<a href="#navigation-main" aria-label="Skip to main navigation">
+                    	<a href="NewMusicList.box" aria-label="Skip to main navigation">
 						  <i class="fa fa-bars" aria-hidden="true"></i>
 						</a>
 					</small>
@@ -98,7 +98,8 @@
 					<a href="#">
 	                    <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
 	                    
-	                    <img class="img-responsive img-center" src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="" >
+	                    <img class="img-responsive img-center" src="
+	                    <c:url value='/img/${b.albumcoverfilepath}'/>" alt="" >
 	                </a>
 	                <div class="well well-sm">
 						<c:out value="${b.title}"/><br>

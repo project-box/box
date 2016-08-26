@@ -51,12 +51,36 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
+		}else if(command.equals("/BoxNewmusicAddAction.box")){
+			action = new BoxNewmusicAddAction();
+			try {
+					forward = action.execute(request, response);
+			} catch (Exception e) {
+					e.printStackTrace();
+			}		
+		}else if(command.equals("/NewMusicList.box")){
+				action = new BoxNewMusicListAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}else if(command.equals("/NewMusicDetail.box")){
+			action = new BoxNewMusicDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		} else if (command.equals("/mypage.box")) {
 			forward = new ActionForward(); forward.setRedirect(false);
 			forward.setPath("./box/mypage.jsp");
 		} else if(command.equals("/login.box")){
 			forward = new ActionForward(); forward.setRedirect(false);
 			forward.setPath("./box/login.jsp");
+
 		} else if(command.equals("/loginAction.box")){
 			action = new BoxLoginAction();
 			try {
@@ -64,6 +88,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 		}
 		
 
