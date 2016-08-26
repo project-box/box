@@ -51,7 +51,9 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+		} else if (command.equals("/NewmusicWrite.box")) {
+			forward = new ActionForward(); forward.setRedirect(false);
+			forward.setPath("./box/New_music_write.jsp");
 		}else if(command.equals("/BoxNewmusicAddAction.box")){
 			action = new BoxNewmusicAddAction();
 			try {
