@@ -94,6 +94,14 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
+		} else if (command.equals("/logoutAction.box")) {
+			action = new BoxLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		} else if (command.equals("/ConcertDetail.box")) {
 			action = new BoxConcertDetailAction();
 			try {
