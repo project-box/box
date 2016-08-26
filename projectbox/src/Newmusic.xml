@@ -48,7 +48,11 @@
 
 	<!-- 게시판 내용보기 -->
 	<select id="music_cont" resultType="music" parameterType="int">
-		select * from music where music_id=#{music_id}
+		select * from music where id=#{music_num}
+		
+<!-- 		select * from (select genre,artist,title,album,lyrics,publishdate,albumcoverfilepath from) 
+		where music_id=#{music_id} -->
+		
 	</select>	
 
  	<!-- 게시물 수정 -->

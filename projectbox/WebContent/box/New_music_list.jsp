@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -141,7 +142,8 @@
 						<div align="center">${b.artist}</div>
 					</td>
 					<td style="font-family:Tahoma;font-size:10pt;">
-						<div align="center">${b.publishdate}</div>
+						<div align="center"><fmt:formatDate value="${b.publishdate}" pattern="yyyy-MM-dd"/>
+					</div>
 					</td>	
 					<td style="font-family:Tahoma;font-size:10pt;">
 						<div align="center">${b.genre}</div>
