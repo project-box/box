@@ -40,7 +40,7 @@
 	<!-- 유저 조회 -->
 	<select id="user_info" parameterType="String" resultType="user">
 	    <![CDATA[
-		select * from users where #{id}
+		select * from users where id = #{userId}
 		]]>
 	</select>
 </mapper>

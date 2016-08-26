@@ -57,6 +57,13 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 		} else if(command.equals("/login.box")){
 			forward = new ActionForward(); forward.setRedirect(false);
 			forward.setPath("./box/login.jsp");
+		} else if(command.equals("/loginAction.box")){
+			action = new BoxLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 
@@ -68,7 +75,8 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				dispatcher.forward(request, response);
 			}
 		}
-	}// doprocess() end
+	}// doprocess()
+																															// end
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

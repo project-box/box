@@ -68,6 +68,7 @@
 					      <li><a href="#">회원가입</a></li>
 					      <li><a href="login.box">로그인</a></li>
 					      <li><a href="mypage.box">마이페이지</a></li>
+					      <%-- <li>${loginId}</li> --%>
 					    </ul>
 					  </div>
                     </li>
