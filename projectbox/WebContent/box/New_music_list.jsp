@@ -85,22 +85,22 @@
 		<c:if test="${listcount > 0 }">
 			<tr align="center" valign="middle" bordercolor="#333333">
 				<td style="font-family: Tahoma; font-size: 10pt;" width="8%" height="26">
-					<div align="left">번호</div>
+					<div align="center">번호</div>
 				</td>
 				<td style="font-family: Tahoma; font-size: 10tp;" width="8%" height="26"> 
-					<div align="left">    </div>
+					<div align="center">    </div>
 				</td>
 				<td style="font-family: Tahoma; font-size: 10pt;" width="40%">
-					<div align="left">제목</div>
+					<div align="center">제목</div>
 				</td>
 				<td style="font-family: Tahoma; font-size: 10pt;" width="14%">
-					<div align="left">아티스트</div>
+					<div align="center">아티스트</div>
 				</td>
 				<td style="font-family: Tahoma; font-size: 10pt;" width="17%">
-					<div align="left">발매일</div>
+					<div align="center">발매일</div>
 				</td>
 				<td style="font-family: Tahoma; font-size: 10pt;" width="21%">
-					<div align="left">장르</div>
+					<div align="center">장르</div>
 				</td>
 			</tr>
 
