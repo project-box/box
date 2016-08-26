@@ -8,14 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.board.action.BoardAddAction;
-import net.board.action.BoardDeleteAction;
-import net.board.action.BoardDetailAction;
-import net.board.action.BoardModifyAction;
-import net.board.action.BoardModifyView;
-import net.board.action.BoardReplyAction;
-import net.board.action.BoardReplyView;
-
 @WebServlet("*.box")
 public class BoxFrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 
@@ -109,7 +101,13 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+		} else if(command.equals("/ConcertList.box")){
+			action = new BoxConcertListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {
