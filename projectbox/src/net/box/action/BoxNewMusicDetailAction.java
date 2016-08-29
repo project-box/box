@@ -17,12 +17,14 @@ public class BoxNewMusicDetailAction implements Action {
 
 		BoxNewmusicDAOImpl boxdao=new BoxNewmusicDAOImpl();
 		BoxMusicBean Newmusicdata=new BoxMusicBean();
-	   	
+		
+		
 		int num=Integer.parseInt(request.getParameter("num"));
 		String page = request.getParameter("page");
-	/*	Newmusicdao.setReadCountUpdate(num);*/
-	   /*	Newmusicdata=Newmusicdao.getMusicDetail(num);*/
+//		boxdao.setReadCountUpdate(num);
+	   	Newmusicdata=boxdao.getNewmusicCont(num);
 	   	
+		
 	   	if(Newmusicdata==null){
 	   		System.out.println("상세보기 실패");
 	   		return null;

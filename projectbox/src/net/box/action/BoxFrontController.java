@@ -65,7 +65,15 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/NewMusicDetail.box")) {
+		} else if (command.equals("/NewmusicDetailAction.box")) {
+			action = new BoxNewMusicDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/BoxNewMusicDetail.box")) {
 			action = new BoxNewMusicDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -97,6 +105,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 		} else if (command.equals("/ConcertDetail.box")) {
 			action = new BoxConcertDetailAction();
 			try {
@@ -133,12 +142,19 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 						
+		} else if(command.equals("/ConcertList.box")){
+			action = new BoxConcertListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {
 			if (forward.getRedirect()) { // true
 				response.sendRedirect(forward.getPath());
-			} else { // false 媛믪쟾�떖�씠 媛��뒫�븿
+			} else { // false 값전달이 가능함
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
 			}

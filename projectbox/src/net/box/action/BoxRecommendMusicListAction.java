@@ -24,7 +24,7 @@ public class BoxRecommendMusicListAction implements Action {
 		
 		ActionForward forward= new ActionForward();
 	 	forward.setRedirect(false);
- 		forward.setPath("./box/New_music_detail.jsp");
+ 		forward.setPath("./box/recommend_music_list.jsp");
  		return forward;
 	 }
 }
