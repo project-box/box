@@ -12,6 +12,17 @@
 		]]>
 	</select>
 	
+	<!-- 최신 곡 목록-->
+	<select id="recent_music_list" parameterType="int" resultType="music">
+	    <![CDATA[
+		select * from 
+		  (select rownum rnum,id,similarity,genre,artist,
+		  title,album,publishdate,albumcoverfilepath,lyrics
+		  from (select * from music order by publishdate desc))
+		  where rnum <= #{count}
+		]]>
+	</select>
+	
 	<!-- 전체 공연 목록 -->
 	<select id="concert_list" resultType="concert">
 	    <![CDATA[
@@ -26,6 +37,12 @@
 		]]>
 	</select>
 	
+	<!-- 유저 조회 -->
+	<select id="user_info" parameterType="String" resultType="user">
+	    <![CDATA[
+		select * from users where id = #{userId}
+		]]>
+	</select>
 </mapper>
 
 

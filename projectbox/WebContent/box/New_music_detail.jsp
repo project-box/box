@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,39 +65,46 @@
     
     <div class="container">
     
-    <table class="table table-striped">
-			    <thead>
-			      <tr>
-			      	<th></th>
-			        <th>제목</th>
-			        <th>아티스트</th>
-			        <th>장르</th>
-			        <th>앨범</th>			      
-			      </tr>
-			    </thead>
-			    <tbody>
-				    <c:forEach var="b" items="${musiclist}">
-				    	<tr>
-				    		<td><a href="#">
-				    		<img src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="" width=40px height=40px>
-				    		</a></td>
-			            	<td><a href="#"><c:out value="${b.title}"/></a></td>
-			            	<td><a href="#"><c:out value="${b.artist}"/></a></td>
-							<td><a href="#"><c:out value="${b.genre}"/></a></td>
-							<td><a href="#"><c:out value="${b.album}"/></a></td>
-						</tr>
-					</c:forEach>
-			    </tbody>
-			  </table>
-    
-    <br><br><br><br><br><br><br>
-    
+<!-- 최신곡 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">곡 정보
+                    <small>
+                    	<a href="NewMusicDetail.box" aria-label="Skip to main navigation">
+						  <i class="fa fa-bars" aria-hidden="true"></i>
+						</a>
+					</small>
+                </h1>
+            </div>
+            
+          <table>
+          	<tr>
+          	 <td rowspan="4"><img class="img-responsive img-center" src="
+							<c:url value='/img/${b.albumcoverfilepath}'/>" alt="" ></td>
+			<td style="font-family:Tahoma;font-size:25pt;">
+						<div align="center">${b.title}</div></td>
+            </tr>
+            <tr>
+            	<td style="font-family:Tahoma;font-size:10pt;">
+						<div align="center">아티스트: ${b.artist}</div></td>
+			</tr>
+			<tr>
+				<td style="font-family:Tahoma;font-size:10pt;">
+						<div align="center">발매일: 
+						<fmt:formatDate value="${b.publishdate}" pattern="yyyy-MM-dd"/></div></td>
+			</tr>
+			<tr>
+				<td style="font-family:Tahoma;font-size:10pt;">
+						<div align="center">장르: ${b.genre}</div></td>
+			</tr>
+          </table>
+          
+   
     <!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12" style="font-size:10px">
-                    <p>Copyright &copy; 2016 box Inc. 모든 권리 보유. </p><br>
-                    <p>사업자등록번호 : 510-11-24601 | 통신판매업신고번호 : 제 2011-서울강남-00810호 | 대표이사 : 마크장 | 주소 : 서울특별시 강남구 영동대로 517 아셈타워 39층 | 대표전화 : 02-6512-8000 | 팩스 : 02-6128-8000</p>
+                <div class="col-lg-12">
+                    <p>Copyright &copy; designed by box 2016 </p>
                 </div>
             </div>
             <!-- /.row -->

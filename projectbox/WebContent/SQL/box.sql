@@ -11,6 +11,7 @@ drop sequence preference_seq;
 drop sequence concertboard_seq;
 drop sequence generalboard_seq;
 
+
 -- 사용자 테이블
 create table users(
   id varchar2(14) primary key, -- 아이디
@@ -33,7 +34,7 @@ create table music (
   title varchar2(40) not null, -- 곡제목
   album varchar2(40), -- 앨범
   lyrics varchar2(4000), -- 가사
-  publishdate date, -- 발매일
+  publishdate varchar2(30), -- 발매일
   albumcoverfilepath varchar2(40) -- 앨범커버 파일 경로
 );
 
@@ -108,3 +109,6 @@ create sequence generalboard_seq
 start with 1
 increment by 1
 nocache;
+
+select * from music;
+drop table music purge;

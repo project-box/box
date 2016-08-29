@@ -13,10 +13,14 @@ import net.box.db.BoxMusicBean;
 public class BoxRecommendMusicListAction implements Action {
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
-//		BoardDAO boarddao=new BoardDAO();
 		BoxDAOImpl boxdao=new BoxDAOImpl();
 		
-		System.out.println("추천리스트 액션");
+
+		System.out.println("곡 정보 액션!!");
+
+		List<BoxMusicBean> musiclist = boxdao.getMusicList();
+		request.setAttribute("musiclist", musiclist);
+
 		
 		ActionForward forward= new ActionForward();
 	 	forward.setRedirect(false);
