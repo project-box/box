@@ -5,6 +5,7 @@
 
 <mapper namespace="concert">
 
+
 <!-- 게시판 내용보기 -->
 	<select id="concert_cont" resultType="concert" parameterType="int">
 		select * from concert where id = #{id}

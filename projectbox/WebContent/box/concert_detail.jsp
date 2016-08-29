@@ -202,7 +202,7 @@ $(document).ready(function(){
 		
 		
 		<div class="image">
-			<img src="./img/${concertdata.posterfilepath}.jsp" width="157" height="191" alt="title" />
+			<img src="./img/${concertdata.posterfilepath}" width="157" height="191" alt="title" />
 		</div>
 		
 		
@@ -212,13 +212,13 @@ $(document).ready(function(){
 			<b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;
 			<fmt:formatDate value="${concertdata.startdate}" pattern="yyyy-MM-dd"/>
 			~
-			${concertdata.enddate}<br> <br>
+			<fmt:formatDate value="${concertdata.enddate}" pattern="yyyy-MM-dd"/><br> <br>
 			<b>가격</b> &nbsp;&nbsp;&nbsp;&nbsp;VIP석 : 30,000원 <br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R석 : 10,000원<br><br>
-			<input type="button" class="btn btn-default"value="예매하기"
-			onclick="window.open('ticket.jsp','win','width=350,height=100,resizable=0')">
-			<button type="button" class="btn btn-gray">취소</button>
+			<a class="btn btn-default" href="/projectbox/ConcertTicket.box">예매하기</a>
+			<a class="btn btn-gray" href="/projectbox/main.box">취소</a>
+			
 		</div>
 		
 		

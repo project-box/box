@@ -36,7 +36,7 @@ public class BoxConcertDetailAction implements Action{
 		
 	   	ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./box/concert_detail.jsp");
+		forward.setPath("./ConBoardList.box");
 		return forward;
 	}
 }

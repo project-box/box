@@ -114,6 +114,18 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 			
+		}
+			
+			/*예매하기 버튼 클릭*/
+			else if (command.equals("/ConcertTicket.box")) {
+				action = new ConcertTicketAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			
 		/*후기 저장*/
 		}else if (command.equals("/ConBoardAddAction.box")) {
 			action = new ConBoardAddAction();

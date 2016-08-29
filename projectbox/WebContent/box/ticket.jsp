@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<p align="center" margin=auto> 
+<p align="center"> 
 <font style="font-size: 30px; font-family:inherit; 
 color:gray;">구현중입니다.</font> </p>
 
