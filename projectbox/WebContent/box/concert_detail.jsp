@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -207,7 +208,11 @@ $(document).ready(function(){
 		
 		<div class="info">
 			<b>장소</b>&nbsp;&nbsp;&nbsp;&nbsp;${concertdata.place}<br> <br> 
-			<b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;${concertdata.startdate}~${concertdata.enddate}<br> <br>
+			<%-- <b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;${concertdata.startdate}~${concertdata.enddate}<br> <br> --%>
+			<b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;
+			<fmt:formatDate value="${concertdata.startdate}" pattern="yyyy-MM-dd"/>
+			~
+			${concertdata.enddate}<br> <br>
 			<b>가격</b> &nbsp;&nbsp;&nbsp;&nbsp;VIP석 : 30,000원 <br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R석 : 10,000원<br><br>
