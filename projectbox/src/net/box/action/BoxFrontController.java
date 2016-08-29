@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.box.action.ConBoardAddAction;
+import net.box.action.ConBoardDeleteAction;
+import net.box.action.ConBoardListAction;
+
 @WebServlet("*.box")
 public class BoxFrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 
@@ -100,8 +104,36 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		/*후기 저장*/
+		}else if (command.equals("/ConBoardAddAction.box")) {
+			action = new ConBoardAddAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+	    /*후기 목록 출력*/
+		}else if (command.equals("/ConBoardList.box")) {
+			action = new ConBoardListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		/*후기 삭제*/
+		}else if (command.equals("/ConBoardDeleteAction.box")) {
+			action = new ConBoardDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+						
 		}
-		
 
 		if (forward != null) {
 			if (forward.getRedirect()) { // true

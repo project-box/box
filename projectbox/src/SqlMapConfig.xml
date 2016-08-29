@@ -28,6 +28,7 @@
 		<typeAlias type="net.box.db.BoxConcertBean" alias="concert" />
 		<typeAlias type="net.box.db.BoxGeneralBoardBean" alias="generalboard" />
 		<typeAlias type="net.box.db.BoxUserBean" alias="user" />
+		<typeAlias type="net.box.db.ConBoardBean" alias="conboard" />
 	</typeAliases>
 
 	<environments default="development">
@@ -46,6 +47,8 @@
 		<mapper resource="box.xml" />
 		<mapper resource="board.xml" /> <!-- freeboard -->
 		<mapper resource="Newmusic.xml" />
+		<mapper resource="conboard.xml" />
+		<mapper resource="concert.xml" />
 	</mappers>
 
 </configuration>

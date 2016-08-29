@@ -12,6 +12,10 @@ public class BoxConcertBean {
 	private String posterfilepath;
 	private String artist;
 	private int similarity;
+	private float locationx;	
+	private float locationy;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -65,6 +69,18 @@ public class BoxConcertBean {
 	}
 	public void setSimilarity(int similarity) {
 		this.similarity = similarity;
+	}
+	public float getLocationx() {
+		return locationx;
+	}
+	public void setLocationx(float locationx) {
+		this.locationx = locationx;
+	}
+	public float getLocationy() {
+		return locationy;
+	}
+	public void setLocationy(float locationy) {
+		this.locationy = locationy;
 	}
 	
 	

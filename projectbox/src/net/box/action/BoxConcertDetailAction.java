@@ -3,18 +3,38 @@ package net.box.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.box.db.BoxConcertBean;
+import net.box.db.BoxConcertDAOImpl;
+
 public class BoxConcertDetailAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward = new ActionForward();
+//		request.setCharacterEncoding("utf-8");
+		System.out.println("들어옴1");		
 		
-		//...
-		String concertId = (String)request.getParameter("id");
-		System.out.println(concertId);
+		BoxConcertDAOImpl concertdao=new BoxConcertDAOImpl();
+		BoxConcertBean concertdata=new BoxConcertBean();
 		
-		// 1.id를 이용해 DB에서 concert 객체를 가져온다.
+		int id=Integer.parseInt(request.getParameter("id"));
+		String page = "1";
+		if(request.getParameter("page") != null){
+			page = request.getParameter("page");
+		}
+		System.out.println("들어옴2");
 		
-		// 2. request.setAttribute() 를 이용해 리퀘스트 객체에 담는다.
+		concertdata=concertdao.getConcertCont(id);
+		System.out.println("concertdata="+concertdata);
+		System.out.println("들어옴3");	
 		
+		if(concertdata==null){
+	   		System.out.println("상세보기 실패");
+	   		return null;
+	   	}
+	   	System.out.println("상세보기 성공");
+	   	
+		request.setAttribute("concertdata", concertdata);
+		request.setAttribute("page", page);
+		
+	   	ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("./box/concert_detail.jsp");
 		return forward;

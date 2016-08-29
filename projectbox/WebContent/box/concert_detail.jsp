@@ -25,18 +25,20 @@
 
 <!-- 구글맵 부트스트랩 -->
 <script src="http://maps.googleapis.com/maps/api/js"></script>
-<script>var myCenter=new google.maps.LatLng(51.508742,-0.120850);
 
-function initialize(){	
-	var mapProp = { center:myCenter, zoom:5,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
+<script>
+function initialize() {
+ 	
+  var lat = ${concertdata.locationx};
+  var lon = ${concertdata.locationy};
+  var mapProp = {
+//    center:new google.maps.LatLng(51.508742,-0.120850),
+    center:new google.maps.LatLng(lat,lon),
+    zoom:5,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
   };
-
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-var marker=new google.maps.Marker({position:myCenter, });
-marker.setMap(map);}
-
+  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
@@ -82,9 +84,7 @@ $(document).ready(function(){
 			$("#content").focus();
 			return false;
 			}
-		});
-	
-	 
+		}); 
 	
 	
 	});
@@ -201,18 +201,18 @@ $(document).ready(function(){
 		
 		
 		<div class="image">
-			<img src="./jang.png" width="157" height="191" alt="title" />
+			<img src="./img/${concertdata.posterfilepath}.jsp" width="157" height="191" alt="title" />
 		</div>
 		
 		
 		<div class="info">
-			<b>장소</b>&nbsp;&nbsp;&nbsp;&nbsp;place<br> <br> 
-			<b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;startdate~enddate<br> <br>
-			<b>관람시간</b>&nbsp;&nbsp;&nbsp;&nbsp;showtime<br> <br>
+			<b>장소</b>&nbsp;&nbsp;&nbsp;&nbsp;${concertdata.place}<br> <br> 
+			<b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;${concertdata.startdate}~${concertdata.enddate}<br> <br>
 			<b>가격</b> &nbsp;&nbsp;&nbsp;&nbsp;VIP석 : 30,000원 <br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R석 : 10,000원<br><br>
-			<button type="button" class="btn btn-default">예매하기</button>
+			<input type="button" class="btn btn-default"value="예매하기"
+			onclick="window.open('ticket.jsp','win','width=350,height=100,resizable=0')">
 			<button type="button" class="btn btn-gray">취소</button>
 		</div>
 		
@@ -228,7 +228,7 @@ $(document).ready(function(){
 		<div class="tab-content">		
 			<div id="menu1" class="tab-pane fade">	<!-- 상세정보 -->									
 					<br><b>공연시간</b><br>
-					<p>showtime</p><br>
+					<p>${concertdata.showtime}</p><br>
 					<b>할인정보</b><br>
 					<p>휴가철 막바지 세일 - 20% 할인</p><br>
 					<b>공연관련정보</b><br> <br>
@@ -241,9 +241,9 @@ $(document).ready(function(){
 						</tr>
 						<tr align=center>
 							<td>주연</td>
-							<td>artist</td>
+							<td>${concertdata.artist}</td>
 							<td>공연장소</td>
-							<td>place</td>
+							<td>${concertdata.place}</td>
 						</tr>
 						<tr align=center>
 							<td>예매수수료</td>
@@ -259,9 +259,9 @@ $(document).ready(function(){
 			
 		<br> <b>관람후기 보기</b><br> <br>
 		
-<form action="/Project/ConBoardAddAction.bo" method="post" name="conboardform">
-<input type="hidden" name="concertid" value="1"/>
-<input type="hidden" name="userid" value="toto" />
+<form action="/projectbox/ConBoardAddAction.box" method="post" name="conboardform">
+<input type="hidden" name="concertid" value="7"/>
+<input type="hidden" name="userid" value="dev" />
 <table align="center" valign="middle" border="0" width="550">
    <tr >
     <td >
@@ -285,16 +285,16 @@ $(document).ready(function(){
       
 				
 		<tr align="center" valign="middle">
-		<td style="font-size:8pt;" width="8%">
+		<td style="font-size:8pt; color: red;" width="8%">
 			<div align="center"><b>번호</b></div>
 		</td>
-		<td style="font-size:8pt;" width="10%">
+		<td style="font-size:8pt; color: red;" width="10%">
 			<div align="center"><b>아이디</b></div>
 		</td>
-		<td style="font-size:8pt;" width="50%">
+		<td style="font-size:8pt; color: red;" width="50%">
 			<div align="center"><b>관람후기</b></div>
 		</td>
-		<td style="font-size:8pt;" width="32%">
+		<td style="font-size:8pt; color: red;" width="32%">
 			<div align="center"><b>날짜</b></div>
 		</td>		
 		</tr>
@@ -311,8 +311,8 @@ $(document).ready(function(){
 		</td>					
 		<td>${c.userid}		</td>
 		<td>${c.content}		</td>	
-		<td>${fn:substring(c.registerdate,0,16)}		
-		<a href="./ConBoardDeleteAction.bo?id=${c.id}&page=${page}">
+		<td>${fn:substring(c.registerdate,0,8)}		
+		<a href="./ConBoardDeleteAction.box?id=${c.id}&page=${page}">
 			[삭제]</a>&nbsp;&nbsp;
        </td>
 	  </tr>
@@ -325,7 +325,7 @@ $(document).ready(function(){
 		<td colspan=4>
 		<c:if test="${page <= 1 }">	[이전]&nbsp;	</c:if>
 			<c:if test="${page > 1 }">			
-				 <a href="./ConBoardList.bo?page=${page-1}">[이전]</a>&nbsp;
+				 <a href="./ConBoardList.box?page=${page-1}">[이전]</a>&nbsp;
 			</c:if>
     <!-- 현재페이지 -->
 			<c:forEach var="a" begin="${startpage}" end="${endpage}">
@@ -333,7 +333,7 @@ $(document).ready(function(){
 					[${a}]
 				</c:if>
 				<c:if test="${a != page }">
-					<a href="./ConBoardList.bo?page=${a}">[${a}]</a>&nbsp;
+					<a href="./ConBoardList.box?page=${a}">[${a}]</a>&nbsp;
 				</c:if>
 			</c:forEach>
 	<!-- 다음버튼 -->	
@@ -341,7 +341,7 @@ $(document).ready(function(){
 				[다음] 
 			</c:if>
 			<c:if test="${page < maxpage }">
-				<a href="./ConBoardList.bo?page=${page+1}">[다음]</a>
+				<a href="./ConBoardList.box?page=${page+1}">[다음]</a>
 			</c:if>
 	
 	
