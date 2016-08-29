@@ -265,8 +265,8 @@ $(document).ready(function(){
 		<br> <b>관람후기 보기</b><br> <br>
 		
 <form action="/projectbox/ConBoardAddAction.box" method="post" name="conboardform">
-<input type="hidden" name="concertid" value="7"/>
-<input type="hidden" name="userid" value="dev" />
+<input type="hidden" name="concertid" value="${concertdata.id}"/>
+<input type="hidden" name="userid" value="${userdata.id}" />
 <table align="center" valign="middle" border="0" width="550">
    <tr >
     <td >
@@ -283,13 +283,11 @@ $(document).ready(function(){
 
 
 <!-- 후기 리스트 출력-->
-<br><table align=center width=600 border="0" cellpadding="0" cellspacing="0">
+<br><table class="table table-bordered" align=center 
+            width=600 border="1" cellpadding="0" cellspacing="0">
 <!-- 레코드가 있으면 -->
 <c:if test="${!empty conboardlist}">
-<tr align="center" valign="middle">
-      
-				
-		<tr align="center" valign="middle">
+<tr align="center" valign="middle">  
 		<td style="font-size:8pt; color: red;" width="8%">
 			<div align="center"><b>번호</b></div>
 		</td>
@@ -315,7 +313,8 @@ $(document).ready(function(){
 		<c:set var="num" value="${num-1}"/>					
 		</td>					
 		<td>${c.userid}		</td>
-		<td>${c.content}		</td>	
+		<td style="width:200px; overflow:hidden; word-break:break-all; text-overflow:ellipsis;">
+		${c.content}</td>	
 		<td>${fn:substring(c.registerdate,0,8)}		
 		<a href="./ConBoardDeleteAction.box?id=${c.id}&page=${page}">
 			[삭제]</a>&nbsp;&nbsp;
