@@ -89,6 +89,13 @@
 
 	<div class="container">
 
+		<!-- 선호도 -->
+		<div>
+			<c:if test="${sessionScope.loginId != null}">
+				<a href="PreferenceListAction.box">엇! 아직 선호도가 조사되지 않았습니다.</a>
+			</c:if>
+		</div>
+
 		<!-- 최신곡 -->
 		<div class="row">
 			<div class="col-lg-12">

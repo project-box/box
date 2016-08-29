@@ -8,10 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.box.action.ConBoardAddAction;
-import net.box.action.ConBoardDeleteAction;
-import net.box.action.ConBoardListAction;
-
 @WebServlet("*.box")
 public class BoxFrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 
@@ -161,7 +157,22 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/PreferenceListAction.box")) {
+			action = new BoxPreferenceListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/PreferenceAddAction.box")){
+			action = new BoxPreferenceAddAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
 
 		if (forward != null) {
 			if (forward.getRedirect()) { // true
