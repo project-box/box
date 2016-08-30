@@ -63,6 +63,10 @@ function getRequest() {
     }
 }
 
+
+
+
+
 $(document).ready(function() {
 	  var get = getRequest();
 	  var param = get['param'];
@@ -85,11 +89,10 @@ $(document).ready(function(){
 			$("#content").focus();
 			return false;
 			}
-		}); 
-	
-	
+		}); 	
 	});
 	
+
  </script>
 
 <style type="text/css">

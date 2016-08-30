@@ -3,15 +3,13 @@ package net.box.db;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import net.board.db.BoardBean;
 
 public class ConBoardDAOImpl {
 	
@@ -51,21 +49,24 @@ public class ConBoardDAOImpl {
 	
 	
 	/* �� �ı� �� */
-	public int getListCount() throws SQLException {
+	public int getListCount(int id) throws SQLException {
 		int count = 0;
 		SqlSession session=null;
 		session = getSession();
-		count = ((Integer) session.selectOne("conboard.conboard_count")).intValue();	
+		count = ((Integer) session.selectOne("conboard.conboard_count",id)).intValue();	
 		
 		return count;
 	}
 	
 	
 	/* �ı� ��� */
-	public List<ConBoardBean> getConBoardList(int page)	throws SQLException {
+	public List<ConBoardBean> getConBoardList(int page, int id)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<ConBoardBean> list = session.selectList("conboard.conboard_list", page);
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("page",page);
+		map.put("id", id);		
+		List<ConBoardBean> list = session.selectList("conboard.conboard_list", map);
 	    return list;
 	}
 	
