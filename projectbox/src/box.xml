@@ -37,6 +37,15 @@
 		]]>
 	</select>
 	
+	<!-- 선호도 삽입 -->
+	<select id="generalboard_list" parameterType="preference">
+	    <![CDATA[
+		insert into preference (id, musicid, userid, rate, similarity) values
+			(preference_seq.nextval, #{musicid}, #{userid}, #{rate}, 
+			(select similarity from music where id = #{musicid}));
+		]]>
+	</select>
+	
 	<!-- 유저 조회 -->
 	<select id="user_info" parameterType="String" resultType="user">
 	    <![CDATA[

@@ -29,6 +29,7 @@
 		<typeAlias type="net.box.db.BoxGeneralBoardBean" alias="generalboard" />
 		<typeAlias type="net.box.db.BoxUserBean" alias="user" />
 		<typeAlias type="net.box.db.ConBoardBean" alias="conboard" />
+		<typeAlias type="net.box.db.BoxPreferenceBean" alias="preference" />
 	</typeAliases>
 
 	<environments default="development">
