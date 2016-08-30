@@ -23,6 +23,8 @@
 <link rel="stylesheet" href="raty/jquery.raty.css">
 <script src="raty/jquery.raty.js"></script>
 
+<link href="css/preference.css" rel="stylesheet" >
+
 <script>
 	$(document).ready(function() {
 		$('.star').raty({
@@ -59,13 +61,8 @@
 	}
 	
 	function getStars(){
-		/* $( ".star" ).each(function( index ) {
-			var score = $(this).raty('score');
-			console.log( index + ": " + score );
-		}); */
 		
-		
-		items = {};        
+		var items = {};        
         
 		$('.musicrating').each(function(index){
 			var music = $(this).children().first();
@@ -85,7 +82,14 @@
 		
 		console.log(items);
 		
-		post('/projectbox/PreferenceAddAction.box', items);
+		var count = Object.keys(items).length;
+		
+		if(count > 0){
+			post('/projectbox/PreferenceAddAction.box', items);
+		} else {
+			alert("선택된 항목이 없습니다.");
+			return false;
+		}
 	}
 	
 </script>
@@ -96,9 +100,9 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
-		<div>
-			<input type="button" onclick="window.location='./main.box';" value="취소">
-			<input type="button" onClick="getStars()" value="확인">
+		<div class="nav navbar-nav navbar-right">
+			<button type="button" onclick="window.location='./main.box';" class="btn btn-default">건너뛰기</button>
+			<button type="button" onClick="getStars()" class="btn btn-warning">추천받기</button>
 		</div>
 	</div>
 	<!-- /.container --> </nav>
@@ -106,15 +110,21 @@
 	<c:forEach var="b" items="${musiclist}">
 		<div class="col-md-3 portfolio-item">
 			
-			<img class="img-responsive img-center"
-			src="
-                  <c:url value='/img/${b.albumcoverfilepath}'/>"
-			alt="">
-			<div class="musicrating">
-				<center class="${b.id}">
-					<div class='star'></div>
-				</center>
+			<div>
+				<img class="img-responsive img-center"
+				src="
+	                  <c:url value='/img/${b.albumcoverfilepath}'/>"
+				alt="">
 			</div>
+			
+			<div class="infoi">
+				<div class="musicrating">
+					<center class="${b.id}">
+						<div class='star'></div>
+					</center>
+				</div>
+			</div>
+			
 			<div class="well well-sm">
 				<c:out value="${b.title}" />
 				<br>
