@@ -30,10 +30,10 @@ public class BoxConcertDetailAction implements Action{
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 				
-		int listcount=conboarddao.getListCount(); //�� ����Ʈ ���� �޾ƿ�		
+		int listcount=conboarddao.getListCount(id); //�� ����Ʈ ���� �޾ƿ�		
 		
 		concertdata=concertdao.getConcertCont(id);
-		conboardlist = conboarddao.getConBoardList(page);		  	
+		conboardlist = conboarddao.getConBoardList(page,id);		  	
 			
 		
 		System.out.println("concertdata="+concertdata);		

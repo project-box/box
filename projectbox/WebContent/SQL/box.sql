@@ -117,4 +117,9 @@ nocache;
 select * from music;
 select * from concert;
 drop table music purge;
+select * from concertboard;
+delete concertboard;
+
+
+
 

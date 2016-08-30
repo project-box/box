@@ -24,10 +24,10 @@ public class ConBoardDeleteAction implements Action {
 		   	
 		   	
 		   	ConBoardDAOImpl conboarddao=new ConBoardDAOImpl();	
-		   /*	ConBoardBean conboard = conboarddao.getConBoardCont(id);*/
+		  /*ConBoardBean conboard = conboarddao.getConBoardCont(id);*/
 		   	
-		   	conboarddao.conboardDelete(id);
-		   	
+		   	conboarddao.conboardDelete(id);					
+			
 		   	out.println("<script>");
 	   		out.println("alert('삭제되었습니다.');");
 	   		out.println("location.href='./ConcertDetail.box?page="+page+"&param=123&id="+concertid+"';");
