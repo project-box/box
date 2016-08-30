@@ -41,7 +41,7 @@ public class ConBoardAddAction implements Action {
 
 				ActionForward forward = new ActionForward();
 				forward.setRedirect(true);
-				forward.setPath("./ConBoardList.box?param=123");
+				forward.setPath("./ConcertDetail.box?param=123&id="+conboarddata.getConcertid());
 				return forward;
 			}
 

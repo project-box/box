@@ -197,7 +197,7 @@ $(document).ready(function(){
     </nav>
 
 	<div class="container">
-		<h3>title</h3>
+		<h3>${concertdata.title}</h3>
 		<hr size="10">
 		
 		
@@ -266,7 +266,7 @@ $(document).ready(function(){
 		
 <form action="/projectbox/ConBoardAddAction.box" method="post" name="conboardform">
 <input type="hidden" name="concertid" value="${concertdata.id}"/>
-<input type="hidden" name="userid" value="${userdata.id}" />
+<input type="hidden" name="userid" value="${sessionScope.loginId}" />
 <table align="center" valign="middle" border="0" width="550">
    <tr >
     <td >
@@ -300,57 +300,59 @@ $(document).ready(function(){
 		<td style="font-size:8pt; color: red;" width="32%">
 			<div align="center"><b>날짜</b></div>
 		</td>		
-		</tr>
+</tr>
 		
 		<!-- 화면 출력 번호 -->		
 	    <c:set var="num" value="${listcount-(page-1)*10}"/> 	
 	    <c:forEach var="c" items="${conboardlist}">	
 	    
 	    <!-- 번호 출력 부분 -->
-	    <tr align="center" valign="middle">
+ <tr align="center" valign="middle">
 		<td>		
 		<c:out value="${num}"/>				
 		<c:set var="num" value="${num-1}"/>					
 		</td>					
 		<td>${c.userid}		</td>
 		<td style="width:200px; overflow:hidden; word-break:break-all; text-overflow:ellipsis;">
-		${c.content}</td>	
-		<td>${fn:substring(c.registerdate,0,8)}		
-		<a href="./ConBoardDeleteAction.box?id=${c.id}&page=${page}">
+		${c.content}</td>
+		<td>${fn:substring(c.registerdate,0,16)}		
+		<a href="./ConBoardDeleteAction.box?id=${c.id}&page=${page}&concertid=${c.concertid}">
+		
 			[삭제]</a>&nbsp;&nbsp;
-       </td>
-	  </tr>
-	
-	  </c:forEach>		
+       </td>		  
+</tr>	
+	  </c:forEach>	
+	  	
 	
 	<!-- 후기 페이지번호 출력 -->
 	<!-- 이전버튼 -->
-	<tr align=center height=20>
+<tr align=center height=20>
 		<td colspan=4>
 		<c:if test="${page <= 1 }">	[이전]&nbsp;	</c:if>
-			<c:if test="${page > 1 }">			
-				 <a href="./ConBoardList.box?page=${page-1}">[이전]</a>&nbsp;
-			</c:if>
+		<c:if test="${page > 1 }">			
+				 <a href="./ConcertDetail.box?page=${page-1}&param=123&id=${concertdata.id}">[이전]</a>&nbsp;
+		</c:if>
     <!-- 현재페이지 -->
 			<c:forEach var="a" begin="${startpage}" end="${endpage}">
 				<c:if test="${a == page }">
 					[${a}]
 				</c:if>
 				<c:if test="${a != page }">
-					<a href="./ConBoardList.box?page=${a}">[${a}]</a>&nbsp;
-				</c:if>
-			</c:forEach>
+					<a href="./ConcertDetail.box?page=${a}&param=123&id=${concertdata.id}">[${a}]</a>&nbsp;
+					</c:if>
+			</c:forEach> 
 	<!-- 다음버튼 -->	
 	      <c:if test="${page >= maxpage }">
 				[다음] 
 			</c:if>
 			<c:if test="${page < maxpage }">
-				<a href="./ConBoardList.box?page=${page+1}">[다음]</a>
+				<a href="./ConcertDetail.box?page=${page+1}&param=123&id=${concertdata.id}">[다음]</a>
 			</c:if>
+	</td>
+	</tr>
+	</c:if>
 	
 	
-    </c:if>
-
 <!-- 레코드가 없으면 -->
 	<c:if test="${empty conboardlist}">
 			<tr align="center" valign="middle">
