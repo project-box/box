@@ -132,14 +132,14 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			}
 			
 			
-	    /*후기 목록 출력*/
+	    /*후기 목록 출력
 		}else if (command.equals("/ConBoardList.box")) {
 			action = new ConBoardListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}*/
 			
 		/*후기 삭제*/
 		}else if (command.equals("/ConBoardDeleteAction.box")) {

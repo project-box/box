@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import net.board.db.BoardBean;
+
 public class ConBoardDAOImpl {
 	
 	private SqlSession getSession() {
@@ -60,12 +62,13 @@ public class ConBoardDAOImpl {
 	
 	
 	/* �ı� ��� */
-	public List<ConBoardBean> getConBoardList(int  page)	throws SQLException {
+	public List<ConBoardBean> getConBoardList(int page)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		List<ConBoardBean> list = session.selectList("conboard.conboard_list", page);
 	    return list;
 	}
+	
 	
 	/* �ı� ���뺸�� */
 	public ConBoardBean getConBoardCont(int id) throws SQLException {

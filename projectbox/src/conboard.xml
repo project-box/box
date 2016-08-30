@@ -27,6 +27,13 @@
 		]]>
 	</select>
 	
+	
+	<!-- 후기 내용보기 -->
+	<select id="conboard_cont" resultType="conboard" parameterType="int">
+		select * from concertboard where id=#{id}
+	</select>		
+	
+	
 <!-- 후기 삭제 -->
 	<delete id="conboard_del" parameterType="int">
 		delete from concertboard where id=#{id}
