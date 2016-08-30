@@ -100,11 +100,17 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
-		<div class="nav navbar-nav navbar-right">
-			<button type="button" onclick="window.location='./main.box';" class="btn btn-default">건너뛰기</button>
-			<button type="button" onClick="getStars()" class="btn btn-warning">추천받기</button>
-		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><button type="button" onclick="window.location='./main.box';" class="btn btn-default command-button">건너뛰기</button></li>
+			<li><button type="button" onClick="getStars()" class="btn btn-warning command-button">추천받기</button></li>
+		</ul>
 	</div>
+	
+	<!-- <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul> -->
+    
 	<!-- /.container --> </nav>
 	
 	<c:forEach var="b" items="${musiclist}">

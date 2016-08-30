@@ -3,14 +3,15 @@ package net.box.db;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import net.board.db.BoardBean;
 
 public class BoxDAOImpl {
 	private SqlSession getSession() {
@@ -77,6 +78,28 @@ public class BoxDAOImpl {
 		SqlSession session = null;
 		session = getSession();
 		List<BoxPreferenceBean> list = session.selectList("box.preference_list", userId);
+		return list;
+	}
+	
+	/* 추천곡 조회 */
+	public List<BoxMusicBean> getRecommendedMusicList(List<BoxPreferenceBean> preferenceList, int count) throws SQLException {
+		SqlSession session = null;
+		session = getSession();
+		
+		List<Integer> similaritylist = new ArrayList<Integer>();
+		List<Integer> excludemusiclist = new ArrayList<Integer>();
+		
+		for(BoxPreferenceBean preference : preferenceList){
+			similaritylist.add(preference.getSimilarity());
+			excludemusiclist.add(preference.getMusicid());
+		}
+		
+		Map map = new HashMap<String, Object>();
+		map.put("similaritylist", similaritylist);
+		map.put("excludemusiclist", excludemusiclist);
+		map.put("count", count);
+		
+		List<BoxMusicBean> list = session.selectList("box.recommended_music_list", map);
 		return list;
 	}
 

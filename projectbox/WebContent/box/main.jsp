@@ -156,7 +156,7 @@
 				</h1>
 			</div>
 
-			<c:forEach var="b" items="${musiclist}">
+			<c:forEach var="b" items="${recommendedmusiclist}">
 				<div class="col-md-3 portfolio-item">
 					<a href="#"> <img class="img-responsive img-center"
 						src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="">

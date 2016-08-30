@@ -37,11 +37,13 @@ import net.box.db.BoxPreferenceBean;
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginId") != null){
+			// 선호도 조사
 			String loginId = session.getAttribute("loginId").toString();
 			List<BoxPreferenceBean> preferencelist = boxdao.getPreferenceList(loginId);
 			request.setAttribute("preferencelist", preferencelist);
 			
-			System.out.println(preferencelist.size());
+			List<BoxMusicBean> recommendedmusiclist = boxdao.getRecommendedMusicList(preferencelist, 10);
+			request.setAttribute("recommendedmusiclist", recommendedmusiclist);
 		}
 		
 		ActionForward forward= new ActionForward();

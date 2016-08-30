@@ -53,6 +53,30 @@
 		]]>
 	</select>
 	
+	<!-- 추천곡 목록 -->
+	<select id="recommended_music_list" resultType="music" parameterType="HashMap">
+	   <![CDATA[
+		select * from
+		(select rownum rnum, id, similarity, genre, artist, title, album, 
+		publishdate, albumcoverfilepath, lyrics from music
+		
+		where similarity in 
+		]]>
+		
+		<foreach collection="similaritylist" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and id not in
+		<foreach collection="excludemusiclist" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        
+		<![CDATA[
+		)
+	    where rnum <= #{count}
+	    ]]>
+	</select>
+	
 	<!-- 유저 조회 -->
 	<select id="user_info" parameterType="String" resultType="user">
 	    <![CDATA[
