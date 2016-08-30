@@ -3,7 +3,7 @@ package net.box.db;
 public class BoxPreferenceBean {
 	private int id;
 	private int musicid;
-	private int userid;
+	private String userid;
 	private float rate;
 	private int similarity;
 	
@@ -19,10 +19,10 @@ public class BoxPreferenceBean {
 	public void setMusicid(int musicid) {
 		this.musicid = musicid;
 	}
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public float getRate() {

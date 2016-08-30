@@ -97,7 +97,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div>
-			<input type="button" value="취소">
+			<input type="button" onclick="window.location='./main.box';" value="취소">
 			<input type="button" onClick="getStars()" value="확인">
 		</div>
 	</div>

@@ -1,16 +1,16 @@
 package net.box.action;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.box.db.BoxConcertBean;
 import net.box.db.BoxDAOImpl;
 import net.box.db.BoxGeneralBoardBean;
 import net.box.db.BoxMusicBean;
+import net.box.db.BoxPreferenceBean;
 
 
  public class BoxMainAction implements Action {
@@ -34,6 +34,15 @@ import net.box.db.BoxMusicBean;
 		request.setAttribute("musiclist", musiclist);
 		request.setAttribute("concertlist", concertlist);
 		request.setAttribute("generalboardlist", generalboardlist);
+		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("loginId") != null){
+			String loginId = session.getAttribute("loginId").toString();
+			List<BoxPreferenceBean> preferencelist = boxdao.getPreferenceList(loginId);
+			request.setAttribute("preferencelist", preferencelist);
+			
+			System.out.println(preferencelist.size());
+		}
 		
 		ActionForward forward= new ActionForward();
 	 	forward.setRedirect(false);
