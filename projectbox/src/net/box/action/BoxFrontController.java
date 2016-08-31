@@ -154,6 +154,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./box/New_music_write.jsp");
+		
 		} else if (command.equals("/BoxNewmusicAddAction.box")) {
 			action = new BoxNewmusicAddAction();
 			try {
@@ -186,8 +187,8 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/NewmusicDetailAction.box")) {
-
 			action = new BoxNewMusicDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -195,7 +196,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
-		} else if (command.equals("/BoxNewMusicDetail.box")) {
+		} else if (command.equals("/NewMusicDetail.box")) {
 			action = new BoxNewMusicDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -243,8 +244,6 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 		} else if(command.equals("/ConcertList.box")){
 
 		}
-
-		
 
 		/* 예매하기 버튼 클릭 */
 		else if (command.equals("/ConcertTicket.box")) {
