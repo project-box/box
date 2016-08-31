@@ -308,7 +308,7 @@ $(document).ready(function() {
 			<div id="menu2" class="tab-pane fade">		
 			
 		<br> <b>관람후기 보기</b><br> <br>
-		
+sess=${sessionScope.loginId}	
 <form action="/projectbox/ConBoardAddAction.box" method="post" name="conboardform">
 <input type="hidden" name="concertid" value="${concertdata.id}"/>
 <input type="hidden" name="userid" value="${sessionScope.loginId}" />

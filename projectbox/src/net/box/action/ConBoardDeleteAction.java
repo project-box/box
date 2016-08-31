@@ -25,7 +25,7 @@ public class ConBoardDeleteAction implements Action {
 		
 		ConBoardDAOImpl conboarddao=new ConBoardDAOImpl();	
 		  /*ConBoardBean conboard = conboarddao.getConBoardCont(id);*/		
-		
+		/*
 		if( userid == null){
 			out.println("<script>");
 	   		out.println("alert('로그인이 필요합니다!');");
@@ -33,7 +33,9 @@ public class ConBoardDeleteAction implements Action {
 	   		out.println("</script>");
 	   		out.close();
 	   		return null;
-   		}else if(!userid.equals("dev") || userid == null){   			
+   		}else*/ 
+		
+		   if(!userid.equals("dev") || userid == null){   			
 	   		out.println("<script>");
 	   		out.println("alert('삭제할 권한이 없습니다!');");
 	   		out.println("location.href='./ConcertDetail.box?page="+page+"&param=123&id="+concertid+"';");
