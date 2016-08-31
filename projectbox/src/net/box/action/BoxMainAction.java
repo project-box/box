@@ -43,17 +43,17 @@ public class BoxMainAction implements Action {
 			String loginId = session.getAttribute("loginId").toString();
 			List<BoxPreferenceBean> preferencelist = boxdao.getPreferenceList(loginId);
 			request.setAttribute("preferencelist", preferencelist);
-			
+
 			// 선호도가 없을 경우 추천곡, 추천공연을 가져오지 않음
 			if (preferencelist != null && preferencelist.size() > 0) {
 				// 추천곡
 				List<BoxMusicBean> recommendedmusiclist = boxdao.getRecommendedMusicList(preferencelist, 10);
 				request.setAttribute("recommendedmusiclist", recommendedmusiclist);
-				
+
 				// 추천공연
-			}else{
+			} else {
 				// 디폴트 추천
-				//..
+				// ..
 			}
 		}
 
