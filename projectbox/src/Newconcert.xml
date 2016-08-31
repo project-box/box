@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Newconcert">
+
+	<!-- 게시판 저장 -->
+	<insert id="concert_insert" parameterType="concert">
+		<!-- insert into	music(id,title,artist,Similarity,publishdate,genre,lyrics,album,albumcoverfilepath)
+		values(music_seq.nextval,#{title},#{artist},#{similarity},to_date(#{publishdate,"YYYY-MM-DD"}),
+		#{genre},#{lyrics},#{album},#{albumcoverfilepath})	 -->
+		
+		insert into	concert (id,similarity,place,showtime,title,startdate,enddate,posterfilepath,artist,similarity)
+		values(concert_seq.nextval,#{similarity},#{showtime},#{artist},#{title},#{place},#{startdate},
+		#{enddate},#{posterfilepath,jdbcType=VARCHAR})
+		
+		
+		<!-- insert into	music (id,similarity,genre,artist,title,album,lyrics,albumcoverfilepath)
+		values(music_seq.nextval,#{similarity},#{genre},#{artist},#{title},#{album},#{lyrics},
+		#{albumcoverfilepath,jdbcType=VARCHAR}) -->
+		
+		
+		
+	</insert>    
+	
+	<!-- 게시판 총게시물 수 -->
+	<select id="concert_count" resultType="int">
+		select count(*) from concert
+	</select>	
+	
+	<!-- 게시판 목록 (page번호를 전달받아서 startRow와 endRow를 구함)-->
+	<select id="concert_list"  parameterType="int"  resultType="concert">
+	    <![CDATA[
+		select * from 
+        (select rownum rnum,id,similarity,place,showtime,title,startdate,enddate,posterfilepath,artist 
+        from  (select * from concert order by id desc))
+          where rnum >= ((#{page}-1) * 10+1)  and rnum <= (#{page} * 10)
+		]]>
+	</select>
+	
+	<!-- 게시판 조회수 증가 -->
+	<!-- <update id="music_hit" parameterType="int">
+		update music set
+		music_readcount=music_readcount+1
+		where music_id=#{music_id}
+	</update>	  -->
+
+	<!-- 게시판 내용보기 -->
+	<select id="concert_cont" resultType="concert" parameterType="int">
+		select * from concert where id=#{concert_num}
+		
+<!-- 		select * from (select genre,artist,title,album,lyrics,publishdate,albumcoverfilepath from) 
+		where music_id=#{music_id} -->
+		
+	</select>	
+
+ 	<!-- 게시물 수정 -->
+	<!-- <update id="music_edit" parameterType="music">
+		update music set		
+		music_title=#{music_titld},	music_artist=#{music_artist},music_similarity=#{music_similarity},
+		music_publishdate=#{music_publishdate},music_genre=#{music_genre},music_lyrics=#{music_lyrics},
+		music_album=#{music_album},music_albumcoverfilepath=#{music_albumcoverfilepath}
+		 where music_id=#{music_id} 
+	</update>-->
+
+	<!-- 게시물 삭제 -->
+	<!-- <delete id="music_del" parameterType="int">
+		delete from music where music_id=#{music_id}
+	</delete> -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

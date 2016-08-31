@@ -5,6 +5,7 @@ import java.util.Date;
 public class BoxGeneralBoardBean {
 	private int id;
 	private String userid;
+	private String password;
 	private String name;
 	private String title;
 	private String content;
@@ -22,6 +23,12 @@ public class BoxGeneralBoardBean {
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getName() {
 		return name;
@@ -52,6 +59,7 @@ public class BoxGeneralBoardBean {
 	}
 	public void setRegisterdate(Date registerdate) {
 		this.registerdate = registerdate;
-	}	
+	}
+	
 	
 }

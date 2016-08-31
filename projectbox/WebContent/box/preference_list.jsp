@@ -101,7 +101,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<ul class="nav navbar-nav navbar-right">
-			<li><button type="button" onclick="window.location='./main.box';" class="btn btn-default command-button">건너뛰기</button></li>
+			<li><button type="button" onclick="window.location='./main.box';" class="btn btn-default command-button">취소</button></li>
 			<li><button type="button" onClick="getStars()" class="btn btn-warning command-button">추천받기</button></li>
 		</ul>
 	</div>
