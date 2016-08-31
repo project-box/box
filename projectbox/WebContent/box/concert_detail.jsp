@@ -51,6 +51,7 @@ var lat = '${concertdata.locationx}'
 var lon = '${concertdata.locationy}'
 var myCenter=new google.maps.LatLng(lat, lon);
 var marker;
+//var divid = document.getElementById("map1");
 
 function initialize()
 {
@@ -71,6 +72,7 @@ marker.setMap(map);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(divid, 'click', initialize());
 </script>
 	
 	
@@ -121,7 +123,9 @@ $(document).ready(function() {
 	
 	$("#map1").click(function(){	
 //		alert('호출');
-		initialize();	
+		
+		initialize();
+		
 //		google.maps.event.addDomListener(window, 'load', initialize);
 		
 	});
@@ -308,7 +312,6 @@ $(document).ready(function() {
 			<div id="menu2" class="tab-pane fade">		
 			
 		<br> <b>관람후기 보기</b><br> <br>
-sess=${sessionScope.loginId}	
 <form action="/projectbox/ConBoardAddAction.box" method="post" name="conboardform">
 <input type="hidden" name="concertid" value="${concertdata.id}"/>
 <input type="hidden" name="userid" value="${sessionScope.loginId}" />
@@ -361,8 +364,7 @@ sess=${sessionScope.loginId}
 		<td style="width:200px; overflow:hidden; word-break:break-all; text-overflow:ellipsis;">
 		${c.content}</td>
 		<td>${fn:substring(c.registerdate,0,16)}		
-		<a href="./ConBoardDeleteAction.box?id=${c.id}&page=${page}&concertid=
-		${c.concertid}&userid=${sessionScope.loginId}">
+		<a href="./ConBoardDeleteAction.box?id=${c.id}&concertid=${c.concertid}">
 		
 			[삭제]</a>&nbsp;&nbsp;
        </td>		  

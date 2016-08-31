@@ -17,7 +17,8 @@ public class ConBoardAddAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");	
 		PrintWriter out = response.getWriter();
-
+		
+		
 		ConBoardDAOImpl conboarddao = new ConBoardDAOImpl();
 		ConBoardBean conboarddata = new ConBoardBean();
 		
@@ -38,8 +39,7 @@ public class ConBoardAddAction implements Action {
 			if( userid == null){
 				out.println("<script>");
 		   		out.println("alert('로그인이 필요 합니다!');");
-		   		out.println("location.href='/projectbox/ConcertDetail.box?param=123&id="+concertid+"';");
-		   		/*out.println("history.go(-1)");*/
+		   		out.println("location.href='/projectbox/login.box';");
 		   		out.println("</script>");
 		   		out.close();
 		   		return null;
