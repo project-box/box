@@ -12,6 +12,10 @@ body {
     margin-bottom: 25px;
 }
 
+.boxcenter {
+	margin: 8px;
+}
+
 footer {
     margin: 50px 0;
 }

@@ -76,7 +76,7 @@
 
 
 <div>
-<table border=1 class="table table-striped" style="margin: auto; width: 60%;">
+<table class="table table-striped" style="margin: auto; width: 60%;">
 
 <form action="/projectbox/boardDeleteAction.box" method="post">
 <input type="hidden" name="id" value="${param.id}">

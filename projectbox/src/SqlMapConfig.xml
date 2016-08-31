@@ -7,7 +7,7 @@
 		<typeAlias type="net.board.db.BoardBean" alias="board" />
 	</typeAliases>
 
-	<environments default="development">
+- 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
@@ -27,6 +27,10 @@
 		<typeAlias type="net.box.db.BoxMusicBean" alias="music" />
 		<typeAlias type="net.box.db.BoxConcertBean" alias="concert" />
 		<typeAlias type="net.box.db.BoxGeneralBoardBean" alias="generalboard" />
+		<typeAlias type="net.box.db.BoxUserBean" alias="user" />
+		<typeAlias type="net.box.db.ConBoardBean" alias="conboard" />
+		<typeAlias type="net.box.db.BoxPreferenceBean" alias="preference" />
+		<typeAlias type="net.box.member.db.MemberBean" alias="member" />
 	</typeAliases>
 
 	<environments default="development">
@@ -44,6 +48,11 @@
 	<mappers>
 		<mapper resource="box.xml" />
 		<mapper resource="board.xml" /> <!-- 자유 게시판 -->
+		<mapper resource="board.xml" /> <!-- freeboard -->
+		<mapper resource="Newmusic.xml" />
+		<mapper resource="conboard.xml" />
+		<mapper resource="concert.xml" />
+		<mapper resource="Member.xml" />
 	</mappers>
 
 </configuration>

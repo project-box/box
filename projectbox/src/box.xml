@@ -12,6 +12,17 @@
 		]]>
 	</select>
 	
+	<!-- 최신 곡 목록-->
+	<select id="recent_music_list" parameterType="int" resultType="music">
+	    <![CDATA[
+		select * from 
+		  (select rownum rnum,id,similarity,genre,artist,
+		  title,album,publishdate,albumcoverfilepath,lyrics
+		  from (select * from music order by publishdate desc))
+		  where rnum <= #{count}
+		]]>
+	</select>
+	
 	<!-- 전체 공연 목록 -->
 	<select id="concert_list" resultType="concert">
 	    <![CDATA[
@@ -28,6 +39,52 @@
 		]]>
 	</select>
 	
+	<!-- 선호도 삽입 -->
+	<select id="add_preference" parameterType="preference">
+	    <![CDATA[
+		insert into preference (id, musicid, userid, rate, similarity) values
+			(preference_seq.nextval, #{musicid}, #{userid}, #{rate}, 
+			(select similarity from music where id = #{musicid}))
+		]]>
+	</select>
+	
+	<!-- 선호도 조회 -->
+	<select id="preference_list" resultType="preference">
+	    <![CDATA[
+		select * from preference where userid = #{userId}
+		]]>
+	</select>
+	
+	<!-- 추천곡 목록 -->
+	<select id="recommended_music_list" resultType="music" parameterType="HashMap">
+	   <![CDATA[
+		select * from
+		(select rownum rnum, id, similarity, genre, artist, title, album, 
+		publishdate, albumcoverfilepath, lyrics from music
+		
+		where similarity in 
+		]]>
+		
+		<foreach collection="similaritylist" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and id not in
+		<foreach collection="excludemusiclist" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        
+		<![CDATA[
+		)
+	    where rnum <= #{count}
+	    ]]>
+	</select>
+	
+	<!-- 유저 조회 -->
+	<select id="user_info" parameterType="String" resultType="user">
+	    <![CDATA[
+		select * from users where id = #{userId}
+		]]>
+	</select>
 </mapper>
 
 
