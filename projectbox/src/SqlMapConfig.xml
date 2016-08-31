@@ -47,6 +47,7 @@
 
 	<mappers>
 		<mapper resource="box.xml" />
+		<mapper resource="board.xml" /> <!-- 자유 게시판 -->
 		<mapper resource="board.xml" /> <!-- freeboard -->
 		<mapper resource="Newmusic.xml" />
 		<mapper resource="Newconcert.xml" />

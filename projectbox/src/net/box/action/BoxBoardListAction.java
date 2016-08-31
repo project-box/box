@@ -6,15 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.box.db.BoxDAOImpl;
-import net.box.db.BoxNewmusicDAOImpl;
-import net.box.db.BoxUserBean;
+import net.box.db.BoxBoardDaoImpl;
 
-public class BoxNewMusicListAction implements Action {
-	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		
-		BoxNewmusicDAOImpl Newmusicdao=new BoxNewmusicDAOImpl();
-		List Newmusiclist=new ArrayList();
+public class BoxBoardListAction implements Action {
+	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+		BoxBoardDaoImpl boarddao=new BoxBoardDaoImpl();
+		List generalboardlist=new ArrayList();
 		
 		int page=1; // 현재 페이지 번호
 		int limit=10; // 한 화면에 출력할 레코드 갯수
@@ -23,9 +21,12 @@ public class BoxNewMusicListAction implements Action {
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		int listcount=Newmusicdao.getListCount(); //총 리스트 수를 받아옴
-//		boardlist = boarddao.getBoardList(page,limit); //리스트를 받아옴
-		Newmusiclist = Newmusicdao.getNewmusicList(page);
+		int listcount=boarddao.getListCount(); //총 리스트 수를 받아옴
+		generalboardlist = boarddao.getBoardList(page);
+		
+		System.out.println("listcount="+listcount);
+		System.out.println("generalboardlist="+generalboardlist);
+		System.out.println("");
 		
 		//총 페이지 수
  		int maxpage=(int)((double)listcount/limit+0.95); //0.95를 더해서 올림 처리
@@ -38,18 +39,20 @@ public class BoxNewMusicListAction implements Action {
 
  		if(endpage> maxpage) endpage= maxpage;
  		
- 		int num = listcount-(page-1)*10; 		
+ 		int number = listcount-(page-1)*10; 		
  		
  		request.setAttribute("page", page); //현재 페이지 수
  		request.setAttribute("maxpage", maxpage); //최대 페이지 수
  		request.setAttribute("startpage", startpage); //현재 페이지에 표시할 첫 페이지 수
  		request.setAttribute("endpage", endpage); //현재 페이지에 표시할 끝 페이지 수
 		request.setAttribute("listcount",listcount); //글 수
-		request.setAttribute("Newmusiclist", Newmusiclist);		
+		request.setAttribute("generalboardlist", generalboardlist);		
 		
 		ActionForward forward= new ActionForward();
 	 	forward.setRedirect(false);
- 		forward.setPath("./box/New_music_list.jsp");
- 		return forward;
-	 }
- }
+ 		forward.setPath("./box/boardlist.jsp");
+ 		
+ 		return forward;		
+		
+	}
+}

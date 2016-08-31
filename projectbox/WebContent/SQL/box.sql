@@ -58,9 +58,9 @@ create table preference(
   id number primary key, -- 아이디
   musicid number references music(id), -- 음악아이디
   userid varchar2(14) references users(id), -- 유저아이디
-  genre varchar2(20) not null, -- 장르
-  artist varchar2(40) not null, -- 아티스트
-  title varchar2(40) not null, -- 곡제목
+  genre varchar2(20), -- 장르
+  artist varchar2(40), -- 아티스트
+  title varchar2(40), -- 곡제목
   publishdate date, -- 발매일
   rate number not null, -- 평가지수
   similarity number not null -- 유사도

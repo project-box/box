@@ -37,6 +37,7 @@ public class BoxMainAction implements Action {
 		request.setAttribute("concertlist", concertlist);
 		request.setAttribute("generalboardlist", generalboardlist);
 
+		
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginId") != null) {
 			// 선호도 조사
@@ -51,7 +52,8 @@ public class BoxMainAction implements Action {
 				request.setAttribute("recommendedmusiclist", recommendedmusiclist);
 
 				// 추천공연
-				
+				List<BoxConcertBean> recommendedconcertlist = boxdao.getRecommendedConcertList(preferencelist, 10);
+				request.setAttribute("recommendedconcertlist", recommendedconcertlist);
 			} else {
 				// 디폴트 추천
 				
@@ -64,4 +66,7 @@ public class BoxMainAction implements Action {
 		forward.setPath("./box/main.jsp");
 		return forward;
 	}
-}
+ }
+
+
+		

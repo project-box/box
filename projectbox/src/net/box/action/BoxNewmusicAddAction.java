@@ -15,13 +15,13 @@ import net.box.db.BoxNewmusicDAOImpl;
 
 public class BoxNewmusicAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		BoxNewmusicDAOImpl boxdao = new BoxNewmusicDAOImpl();
 		BoxMusicBean Newmusicdata = new BoxMusicBean();
 		ActionForward forward = new ActionForward();
 
 		String realFolder = "";
-		String saveFolder = "NewmusicUpload";
+		String saveFolder = "/img";
 
 		int fileSize = 5 * 1024 * 1024;
 
@@ -38,7 +38,7 @@ public class BoxNewmusicAddAction implements Action {
 			DateFormat sdFormat = new SimpleDateFormat("MM/dd/yyyy");
 			String d = multi.getParameter("publishdate").trim();
 			Date pDate = sdFormat.parse(d);
-			
+
 			Newmusicdata.setTitle(multi.getParameter("title").trim());
 			Newmusicdata.setArtist(multi.getParameter("artist").trim());
 			Newmusicdata.setSimilarity(Integer.parseInt(multi.getParameter("similarity").trim()));
@@ -46,28 +46,27 @@ public class BoxNewmusicAddAction implements Action {
 			Newmusicdata.setPublishdate(pDate);
 			Newmusicdata.setLyrics(multi.getParameter("lyrics").trim());
 			Newmusicdata.setAlbum(multi.getParameter("album").trim());
-			Newmusicdata.setAlbumcoverfilepath(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
+			Newmusicdata.setAlbumcoverfilepath(multi.getFilesystemName((String) multi.getFileNames().nextElement()));
 
-			System.out.println("Title="+Newmusicdata.getTitle());
-			System.out.println("Artist="+Newmusicdata.getArtist());
-			System.out.println("similarity="+Newmusicdata.getSimilarity());
-			System.out.println("Genre="+Newmusicdata.getGenre());
-			System.out.println("Publishdate="+Newmusicdata.getPublishdate());
-			System.out.println("Album="+Newmusicdata.getAlbum());
-			System.out.println("lyrics="+Newmusicdata.getLyrics());
-			System.out.println("Albumcoverfilepath="+Newmusicdata.getAlbumcoverfilepath());
-			
-			/*result = BoxNewmusicDAOImpl.NewmusicInsert(Newmusicdata);*/
+			System.out.println("Title=" + Newmusicdata.getTitle());
+			System.out.println("Artist=" + Newmusicdata.getArtist());
+			System.out.println("similarity=" + Newmusicdata.getSimilarity());
+			System.out.println("Genre=" + Newmusicdata.getGenre());
+			System.out.println("Publishdate=" + Newmusicdata.getPublishdate());
+			System.out.println("Album=" + Newmusicdata.getAlbum());
+			System.out.println("lyrics=" + Newmusicdata.getLyrics());
+			System.out.println("Albumcoverfilepath=" + Newmusicdata.getAlbumcoverfilepath());
+
+			/* result = BoxNewmusicDAOImpl.NewmusicInsert(Newmusicdata); */
 			boxdao.NewmusicInsert(Newmusicdata);
 
-			/*if (result == false) {
-				System.out.println("음악 등록 실패");
-				return null;
-			}
-			System.out.println("음악 등록 완료");*/
+			/*
+			 * if (result == false) { System.out.println("음악 등록 실패"); return
+			 * null; } System.out.println("음악 등록 완료");
+			 */
 
 			forward.setRedirect(true);
-			forward.setPath("./Box/NewMusicList.box");
+			forward.setPath("./NewMusicList.box");
 			return forward;
 
 		} catch (Exception ex) {

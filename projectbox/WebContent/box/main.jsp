@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,12 +39,12 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="main.box">BOX</a>
+			<a class="navbar-brand" href="main.box">b o x</a>
 
 			<ul class="nav navbar-nav">
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="NewMusicList.box">음악</a></li>
+				<li><a href="ConcertList.box">공연</a></li>
+				<li><a href="#">커뮤니티</a></li>
 			</ul>
 		</div>
 
@@ -96,28 +97,31 @@
 		<!-- 선호도 -->
 		<div>
 			<c:if test="${sessionScope.loginId != null}">
-				
-				<c:set var="count" value="${fn:length(preferencelist)}"/>
-				
-				<c:choose>
-					<c:when test="${count le 0}">
-				        <a href="PreferenceListAction.box">엇! 아직 선호도가 조사되지 않았습니다.</a>
-				    </c:when>
-				    <c:when test="${count le 5}">
-				        <a href="PreferenceListAction.box">엇! 아직 선호도가 조사가 부족합니다.</a>
-				    </c:when>
-				</c:choose>
-				
+				<!--  -->
 			</c:if>
+			
+			<c:set var="count" value="${fn:length(preferencelist)}"/>
+			
+			<c:choose>
+				<c:when test="${sessionScope.loginId == null}">
+			        <!--  -->
+			    </c:when>
+				<c:when test="${count le 0}">
+			        <a href="PreferenceListAction.box">(임시메시지)엇! 아직 선호도가 조사되지 않았습니다.</a>
+			    </c:when>
+			    <c:when test="${count le 5}">
+			        <a href="PreferenceListAction.box">(임시메시지)엇! 아직 선호도가 조사가 부족합니다.</a>
+			    </c:when>
+			</c:choose>
+			
 		</div>
 
 		<!-- 최신곡 -->
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					최신곡 <small> <a href="NewMusicList.box"
-						aria-label="Skip to main navigation"> <i class="fa fa-bars"
-							aria-hidden="true"></i>
+					최신곡 <small> <a href="NewMusicList.box" aria-label="Skip to main navigation" title="최신곡 전체 목록">
+					<i class="fa fa-bars" aria-hidden="true"></i>
 					</a>
 					</small>
 				</h1>
@@ -148,9 +152,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					추천곡 <small> <a href="recommendMusicList.box"
-						aria-label="Skip to main navigation"> <i class="fa fa-bars"
-							aria-hidden="true"></i>
+					추천곡 <small> <a href="recommendMusicList.box" aria-label="Skip to main navigation" title="추천곡 전체 목록">
+					<i class="fa fa-bars" aria-hidden="true"></i>
 					</a>
 					</small>
 				</h1>
@@ -173,14 +176,13 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					추천공연 <small> <a href="ConcertList.box"
-						aria-label="Skip to main navigation"> <i class="fa fa-bars"
-							aria-hidden="true"></i>
+					추천공연 <small> <a href="ConcertList.box" aria-label="Skip to main navigation" title="추천공연 전체 목록"> 
+					<i class="fa fa-bars" aria-hidden="true"></i>
 					</a>
 					</small>
 				</h1>
 			</div>
-			<c:forEach var="b" items="${concertlist}">
+			<c:forEach var="b" items="${recommendedconcertlist}">
 				<div class="col-md-3 portfolio-item">
 					<a href="/projectbox/ConcertDetail.box?id=${b.id}&page=1"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
 						<img class="img-responsive img-center"
@@ -193,36 +195,42 @@
 				</div>
 			</c:forEach>
 		</div>
-
-		<!-- 게시판 -->
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">
-					게시판 <small> <a href="#navigation-main"
-						aria-label="Skip to main navigation"> <i class="fa fa-bars"
-							aria-hidden="true"></i>
-					</a>
+        
+        <!-- 게시판 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">자유 게시판
+                    <small>
+                    	<a href="boardList.box" aria-label="Skip to main navigation">
+						  <i class="fa fa-bars" aria-hidden="true"></i>
+						</a>
 					</small>
-				</h1>
-			</div>
-
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>이름</th>
-						<th>등록일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="b" items="${generalboardlist}">
-						<tr>
-							<td><c:out value="${b.id}" /></td>
-							<td><a href="#"> <c:out value="${b.title}" />
-							</a></td>
-							<td><c:out value="${b.name}" /></td>
-							<td><c:out value="${b.registerdate}" /></td>
+                </h1>
+            </div>
+            
+            <table class="table table-striped">
+			    <thead>
+			      <tr>
+			        <th>번호</th>
+			        <th>제목</th>
+			        <th>이름</th>
+			        <th>등록일</th>
+			        <th>조회수</th>			      
+			      </tr>
+			    </thead>
+			    <tbody>
+				    <c:forEach var="b" items="${generalboardlist}">
+				    	<tr>
+			            	<td><c:out value="${b.id}"/></td>
+			            	<td><a href="#">
+								<c:out value="${b.title}"/></a>
+							</td>
+							<td><c:out value="${b.name}"/></td>
+							<td><%-- <c:out value="${b.registerdate}"/> --%>
+								<c:set var="now" value="${b.registerdate}" />
+								<fmt:formatDate value="${now}" type="date" />							
+							</td>
+							<td><c:out value="${b.readcount}"/></td>
 						</tr>
 					</c:forEach>
 				</tbody>
