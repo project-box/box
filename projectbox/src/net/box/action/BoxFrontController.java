@@ -205,11 +205,8 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			forward.setPath("./box/mypage.jsp");
 
 		} else if (command.equals("/login.box")) {
+			System.out.println("login.box 들어옴");
 			forward = new ActionForward();
-
-		} else if (command.equals("/login.box")) {
-			forward = new ActionForward();
-
 			forward.setRedirect(false);
 			forward.setPath("./box/login.jsp");
 
