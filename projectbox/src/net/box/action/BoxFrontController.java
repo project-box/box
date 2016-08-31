@@ -233,7 +233,12 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			}			
 			
 		} else if(command.equals("/ConcertList.box")){
-
+			action = new BoxConcertListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}
 
 		
@@ -272,15 +277,9 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
-		} else if (command.equals("/ConcertList.box")) {
-			action = new BoxConcertListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
+	
 
-
-			}
+			
 		} else if (command.equals("/PreferenceListAction.box")) {
 			action = new BoxPreferenceListAction();
 			try {
