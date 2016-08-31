@@ -48,7 +48,9 @@ create table concert(
   title varchar2(40) not null, -- 공연 제목
   posterfilepath varchar2(40), -- 포스터 파일 경로
   artist varchar2(40), -- 출연
-  similarity number not null -- 유사도
+  similarity number not null, -- 유사도
+  locationx number,
+  locationy number
 );
 
 -- 선호도 테이블
@@ -72,6 +74,8 @@ create table concertboard(
   content varchar2(400), -- 게시물 내용
   registerdate date -- 게시물 등록날짜
 );
+
+select * from concertboard;
 
 -- 일반 게시판
 create table generalboard(
@@ -110,5 +114,16 @@ start with 1
 increment by 1
 nocache;
 
+
 select * from tab;
 drop table music purge;
+
+select * from music;
+select * from concert;
+drop table music purge;
+select * from concertboard;
+delete concertboard;
+
+
+
+

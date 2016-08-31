@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="concert">
+
+
+<!-- 게시판 내용보기 -->
+	<select id="concert_cont" resultType="concert" parameterType="int">
+		select * from concert where id = #{id}
+	</select>	
+
+</mapper>
