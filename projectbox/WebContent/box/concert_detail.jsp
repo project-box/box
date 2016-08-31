@@ -472,7 +472,7 @@ $(document).ready(function() {
 		
 		
 		<!-- Footer -->
-        <footer>
+        <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12" style="font-size:10px">
                     <p>Copyright &copy; 2016 box Inc. 모든 권리 보유. </p><br>
