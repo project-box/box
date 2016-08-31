@@ -27,13 +27,7 @@
 
 <script>
 	$(document).ready(function() {
-		$('.star').raty({
-			half : true,
-			starOff : 'raty/images/star-off.png',
-			starOn  : 'raty/images/star-on.png',
-			starHalf : 'raty/images/star-half.png',
-			hints : ['별로', '그럭저럭', '보통', '좋음', '최고']
-		});
+		initStars();
 	});
 	
 	function post(path, params, method) {
@@ -58,6 +52,16 @@
 
 	    document.body.appendChild(form);
 	    form.submit();
+	}
+	
+	function initStars(){
+		$('.star').raty({
+			half : true,
+			starOff : 'raty/images/star-off.png',
+			starOn  : 'raty/images/star-on.png',
+			starHalf : 'raty/images/star-half.png',
+			hints : ['별로', '그럭저럭', '보통', '좋음', '최고']
+		});
 	}
 	
 	function getStars(){
@@ -100,6 +104,11 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
+		<ul class="nav navbar-nav">
+			<li>1122</li>
+			<li><button type="button" onclick="initStars()" class="btn btn-default command-button">다시하기</button></li>
+		</ul>
+	
 		<ul class="nav navbar-nav navbar-right">
 			<li><button type="button" onclick="window.location='./main.box';" class="btn btn-default command-button">취소</button></li>
 			<li><button type="button" onClick="getStars()" class="btn btn-warning command-button">추천받기</button></li>

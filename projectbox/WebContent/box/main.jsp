@@ -147,6 +147,7 @@
 		<c:choose>
 				<c:when test="${sessionScope.loginId == null}">
 			        
+			        <hr class="divider">
 			        <div>
 			        	<div style=" float: left; ">
 			        		<img src="icon/music.png" class="con-img" alt="">
@@ -161,10 +162,12 @@
 						<a href="login.box">로그인</a><br>
 			        	<a href="memberJoin.box">회원가입 하시겠습니까?</a><br>
 		        	</div>
+		        	<hr class="divider">
 			        
 			    </c:when>
 			    <c:when test="${count le 5}">
 			        
+			        <hr class="divider">
 					<div>
 			        	<div style=" float: left; ">
 			        		<img src="icon/music.png" class="con-img" alt="">
@@ -172,13 +175,14 @@
 						<div class="abc">
 							<code>
 					        엇! 아직 선호도 조사가 부족합니다.
-							취향에 따른 최소 5개 이상의 음악을 선택하시면
-							이에 따른 컨텐츠를 추천해 드립니다.</code>
+							5개 이상의 음악을 선택하시면
+							그에 따른 컨텐츠를 추천해 드립니다.</code>
 						</div>
 		        	</div>
 		        	<div style="clear:left;">
 		        		<a href="PreferenceListAction.box">선호도 조사를 하시겠습니까? >></a>
 		        	</div>
+		        	<hr class="divider">
 			        	
 			    </c:when>
 			    <c:otherwise>
