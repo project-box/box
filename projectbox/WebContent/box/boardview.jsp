@@ -104,7 +104,7 @@
      </div> 
      
      
-    <div style="margin:auto; width:30%;">
+    <div style="margin:auto; width:20%;">
     	<!-- 목록 -->
     	<img src="/projectbox/img/list.jpg" width="70px"
     		onClick="location.href='/projectbox/boardList.box'">
@@ -123,7 +123,7 @@
    
    
    <!-- Footer -->
-        <footer>
+        <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; designed by box 2016 </p>

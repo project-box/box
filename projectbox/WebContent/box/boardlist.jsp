@@ -133,43 +133,54 @@
 			  </table> <br><br>
 			  
 		<!-- 페이지 처리 부분 -->	  
-		<div style="margin:auto; width:15%;">
-  		<table>
+		<div style="margin:auto; width:50%;">
+  		<table class="table table-striped" style="margin: auto; width: 80%;">
            <tr align=center height=20>
 			<td colspan=7 style=font-family:Tahoma;font-size:10pt;>			
 			
-				<img src="/projectbox/img/previous-2.jpg" width="20px" height="20px">&nbsp;
 			
+			<!-- 처음 페이지 이동 -->
+			<a href="./boardList.box?page=1">
+				<img src="/projectbox/img/previous-2.jpg" width="20px" height="20px" title="처음">&nbsp;
+			</a>
+			
+			<!-- 이전 페이지 이동 -->
 			<c:if test="${page <= 1 }">				
-				<img src="/projectbox/img/previous-1.jpg" width="20px" height="20px">
+				<img src="/projectbox/img/previous-1.jpg" width="20px" height="20px" title="이전">
 			</c:if>
 			<c:if test="${page > 1 }">			
 				 <a href="./boardList.box?page=${page-1}">				 
-				 	<img src="/projectbox/img/previous-1.jpg" width="20px" height="20px">				 
+				 	<img src="/projectbox/img/previous-1.jpg" width="20px" height="20px" title="이전">				 
 				 </a>
 			</c:if>			
 					
-			
+					
+			<!-- 페이지 10개 출력 -->
 			<c:forEach var="a" begin="${startpage}" end="${endpage}">
 				<c:if test="${a == page }">				
 					[${a}]
 				</c:if>
 				<c:if test="${a != page }">
-					<a href="./boardList.box?page=${a}"> [${a}]	</a>&nbsp;&nbsp;&nbsp;
+					<a href="./boardList.box?page=${a}"> [${a}]	</a>
 				</c:if>
 			</c:forEach>	
+					
 						
+			<!-- 다음 페이지 이동 -->			
 			<c:if test="${page >= maxpage }">
-				<img src="/projectbox/img/next-1.jpg" width="20px" height="20px">&nbsp;
+				<img src="/projectbox/img/next-1.jpg" width="20px" height="20px" title="다음">&nbsp;
 			</c:if>
 			<c:if test="${page < maxpage }">
-				<a href="./BoardList.bo?page=${page+1}">
-					<img src="/projectbox/img/next-1.jpg" width="20px" height="20px">&nbsp;
+				<a href="./boardList.box?page=${page+1}">
+					<img src="/projectbox/img/next-1.jpg" width="20px" height="20px" title="다음">&nbsp;
 				</a>
 			</c:if>			
 			
-				<img src="/projectbox/img/next-2.jpg" width="20px" height="20px">&nbsp;
 			
+			<!-- 마지막 페이지 이동 -->
+			<a href="./boardList.box?page=${maxpage}">
+				<img src="/projectbox/img/next-2.jpg" width="20px" height="20px" title="마지막">&nbsp;
+			</a>
 			
 			</td>
 		</tr>
@@ -186,7 +197,7 @@
 
 
 <!-- Footer -->
-        <footer style="float:center">
+        <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; designed by box 2016 </p>

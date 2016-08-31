@@ -90,6 +90,7 @@
 		<input name="password" id="password" type="password">
 	</td>
 </tr>
+<br>
 <tr align=center valign="middle">
 	<td colspan=2>
 		<!-- 삭제 -->
@@ -119,7 +120,7 @@
 
 
 <!-- Footer -->
-        <footer>
+        <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; designed by box 2016 </p>
