@@ -5,16 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-#over:hover {
-	background-color:#CFCFCF;
-	cursor:pointer;
-	opacity: 0.8;
-} 
-#img {
-	padding:8px;
-}
-</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>b o x</title>
 
@@ -26,9 +16,6 @@
     
     <!-- font awesome -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -89,6 +76,18 @@
 							</c:if>
 							<%-- <li>${loginId}</li> --%>
 						</ul>
+						<%-- <ul class="dropdown-menu">
+							<c:if test="${sessionScope.loginId != null}">
+								<li><a href="memberJoin.box">회원가입</a></li>
+								<li><a href="login.box">로그인</a></li>
+								<li><a href="mypage.box">마이페이지</a></li>
+							</c:if>
+							<c:if test="${sessionScope.loginId != null}">
+								<li><a href="logoutAction.box">로그아웃</a></li>
+								<li><a href="mypage.box">마이페이지</a></li>
+							</c:if>
+							<li>${loginId}</li>
+						</ul> --%>
 					</div>
 				</li>
 			</ul>
@@ -96,10 +95,12 @@
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container --> </nav>
-	<div class="container">
+    </nav>
+    
+    <div class="container">
   
 	<!-- 최신곡 -->
-        <div class="row" padding="50px">
+        <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">최신곡
                     <small>
@@ -116,54 +117,58 @@
 		<!-- 레코드가 있으면 -->
 		
 		<c:if test="${listcount > 0 }">
-			<tr id="menu" align="center" valign="middle" bordercolor="#333333">
-				<td style="font-family: Tahoma; font-size: 11pt;"  width="8%" height="26" >
+			<tr align="center" valign="middle" bordercolor="#333333">
+				<td style="font-family: Tahoma; font-size: 10pt;"  width="8%" height="26">
 					<div align="center">번호</div>
 				</td>
-				<td width="7%" height="26"> 
+				<td style="font-family: Tahoma; font-size: 10tp;" width="10%" height="26"> 
 					<div align="center">    </div>
 				</td>
-				<td style="font-family: Tahoma; font-size: 11pt;" width="23%">
+				<td style="font-family: Tahoma; font-size: 10pt;" width="20%">
 					<div align="center">제목</div>
 				</td>
-				<td style="font-family: Tahoma; font-size: 11pt;" width="13%">
+				<td style="font-family: Tahoma; font-size: 10pt;" width="13%">
 					<div align="center">아티스트</div>
 				</td>
-				<td style="font-family: Tahoma; font-size: 11pt;" width="17%">
+				<td style="font-family: Tahoma; font-size: 10pt;" width="17%">
 					<div align="center">발매일</div>
 				</td>
-				<td style="font-family: Tahoma; font-size: 11pt;" width="22%">
+				<td style="font-family: Tahoma; font-size: 10pt;" width="22%">
 					<div align="center">장르</div>
 				</td>
 			</tr>
 
 			<%
-		
+				//int number = listcount-(nowpage-1)*10;
+					//		for(int i=0;i<Newmusiclist.size();i++){
+					//			BoardBean bl=(BoardBean)Newmusiclist.get(i);
 			%>
 
 			<!-- 화면 출력 번호 -->
 			<c:set var="num" value="${listcount-(page-1)*10}" />
 
 			<c:forEach var="b" items="${Newmusiclist}">
-			<div>
-				<tr id="over"align="center" valign="middle" bordercolor="#333333"
-					onclick="location.href='./NewmusicDetailAction.box?num=${b.id}&page=${page}';"
+			<div>	
+				<tr align="center" valign="middle" bordercolor="#333333"
 					onmouseover="this.style.backgroundColor='F8F8F8'"
 					onmouseout="this.style.backgroundColor=''">
 					<td height="23" style="font-family: Tahoma; font-size: 10pt;">
+						
 						
 			<!-- 번호 출력 부분 --> 
 			
 				<c:out value="${num}" /> 
 				<c:set var="num" value="${num-1}" />
-				</td>		
+				</td>
+				
 					<td style="font-family: Tahoma; font-size: 10pt;">
-						<div id="img" align="left">
+						<div align="left">
+							<a href="./NewmusicDetailAction.box?num=${b.id}&page=${page}">
 							<img class="img-responsive img-center" src="
 							<c:url value='/img/${b.albumcoverfilepath}'/>" alt="" >
+							</a>
 						</div>
 					</td>
-					
 					<td style="font-family:Tahoma;font-size:10pt;">
 						<div align="center">${b.title}</div>
 					</td>
@@ -233,7 +238,7 @@
 <!-- Footer -->
 		<footer>
 		<div class="row">
-			<div class="col-lg-12" style="font-size: 10px" align="center">
+			<div class="col-lg-12" style="font-size: 10px">
 				<p>Copyright &copy; 2016 box Inc. 모든 권리 보유.</p>
 				<br>
 				<p>사업자등록번호 : 510-11-24601 | 통신판매업신고번호 : 제 2011-서울강남-00810호 |
