@@ -6,6 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<%@ include file= "/box/header.jsp" %>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>b o x</title>
 
@@ -118,21 +121,7 @@
 			onClick="location.href='/projectbox/boardDelete.box?id=${boarddata.id}&page=${page}'">	   
 	</div> 
         
-    
-   
-   
-   
-   <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; designed by box 2016 </p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
-	</div>
-    <!-- /.container -->
+<%@ include file= "/box/footer.jsp" %>       
 	
 </body>
 </html> 

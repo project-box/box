@@ -147,5 +147,6 @@
 		</div>
 	</c:forEach>
 	
+	<%@ include file= "/box/footer.jsp" %>    
 </body>
 </html>

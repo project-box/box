@@ -4,6 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<%@ include file= "/box/header.jsp" %>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>b o x</title>
 
@@ -25,40 +28,6 @@
     
 </head>
 <body>
-	
-	<!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/projectbox/main.box">BOX</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-
 
 <!-- 글쓰기 폼 -->
 <div class="row" align="center">
@@ -99,21 +68,7 @@
 
 		 </form>
 
+<%@ include file= "/box/footer.jsp" %>    
 
-
-
-
-<!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; designed by box 2016 </p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
-	</div>
-    <!-- /.container -->
-	
 </body>
 </html>
