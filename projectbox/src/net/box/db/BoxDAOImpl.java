@@ -72,7 +72,7 @@ public class BoxDAOImpl {
 		}
 		return result;
 	}
-	
+
 	/* 선호도 조회 */
 	public List<BoxPreferenceBean> getPreferenceList(String userId) throws SQLException {
 		SqlSession session = null;
@@ -80,26 +80,48 @@ public class BoxDAOImpl {
 		List<BoxPreferenceBean> list = session.selectList("box.preference_list", userId);
 		return list;
 	}
-	
+
 	/* 추천곡 조회 */
-	public List<BoxMusicBean> getRecommendedMusicList(List<BoxPreferenceBean> preferenceList, int count) throws SQLException {
+	public List<BoxMusicBean> getRecommendedMusicList(List<BoxPreferenceBean> preferenceList, int count)
+			throws SQLException {
 		SqlSession session = null;
 		session = getSession();
-		
+
 		List<Integer> similaritylist = new ArrayList<Integer>();
 		List<Integer> excludemusiclist = new ArrayList<Integer>();
-		
-		for(BoxPreferenceBean preference : preferenceList){
+
+		for (BoxPreferenceBean preference : preferenceList) {
 			similaritylist.add(preference.getSimilarity());
 			excludemusiclist.add(preference.getMusicid());
 		}
-		
+
 		Map map = new HashMap<String, Object>();
 		map.put("similaritylist", similaritylist);
 		map.put("excludemusiclist", excludemusiclist);
 		map.put("count", count);
-		
+
 		List<BoxMusicBean> list = session.selectList("box.recommended_music_list", map);
+		return list;
+	}
+
+	/* 추천공연 조회 */
+	public List<BoxConcertBean> getRecommendedConcertList(List<BoxPreferenceBean> preferenceList, int count)
+			throws SQLException {
+		SqlSession session = null;
+		session = getSession();
+
+		List<Integer> similaritylist = new ArrayList<Integer>();
+
+		for (BoxPreferenceBean preference : preferenceList) {
+			similaritylist.add(preference.getSimilarity());
+		}
+
+		Map map = new HashMap<String, Object>();
+		map.put("similaritylist", similaritylist);
+		map.put("count", count);
+
+		List<BoxConcertBean> list = session.selectList("box.recommended_concert_list", map);
+
 		return list;
 	}
 

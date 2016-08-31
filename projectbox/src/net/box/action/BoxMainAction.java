@@ -51,7 +51,8 @@ public class BoxMainAction implements Action {
 				request.setAttribute("recommendedmusiclist", recommendedmusiclist);
 
 				// 추천공연
-				
+				List<BoxConcertBean> recommendedconcertlist = boxdao.getRecommendedConcertList(preferencelist, 10);
+				request.setAttribute("recommendedconcertlist", recommendedconcertlist);
 			} else {
 				// 디폴트 추천
 				

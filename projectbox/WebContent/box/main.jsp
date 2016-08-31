@@ -180,7 +180,7 @@
 					</small>
 				</h1>
 			</div>
-			<c:forEach var="b" items="${concertlist}">
+			<c:forEach var="b" items="${recommendedconcertlist}">
 				<div class="col-md-3 portfolio-item">
 					<a href="/projectbox/ConcertDetail.box?id=${b.id}&page=1"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
 						<img class="img-responsive img-center"

@@ -53,7 +53,7 @@
 		]]>
 	</select>
 	
-	<!-- 추천곡 목록 -->
+	<!-- 메인화면 추천곡 목록 -->
 	<select id="recommended_music_list" resultType="music" parameterType="HashMap">
 	   <![CDATA[
 		select * from
@@ -77,7 +77,25 @@
 	    ]]>
 	</select>
 	
-	<!-- 유저 조회 -->
+	<!-- 메인화면 추천공연 목록 -->
+	<select id="recommended_concert_list" resultType="concert" parameterType="HashMap">
+		<![CDATA[
+		select * from 
+		(select rownum rnum, id, place, startdate, enddate, showtime, title, 
+				posterfilepath, artist, similarity, locationx, locationy from concert
+				where similarity in
+		]]>
+		<foreach collection="similaritylist" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        
+        <![CDATA[
+		)
+		where rnum <= #{count}
+		]]>
+	</select>
+	
+	<!-- 로그인 화면 유저 조회 -->
 	<select id="user_info" parameterType="String" resultType="user">
 	    <![CDATA[
 		select * from users where id = #{userId}
