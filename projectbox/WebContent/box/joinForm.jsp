@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,14 +16,15 @@
 <!-- font awesome -->
 <link href="css/font-awesome.min.css" rel="stylesheet">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<script>
+<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-</script>
+<!-- 유효성검사 -->	
+<script src="/projectbox/js/memberCheck.js"></script>	
 
 </head>
+
 <body>
 
 	<!-- Navigation -->
@@ -73,7 +73,7 @@
 						</button>
 						<ul class="dropdown-menu">
 							<c:if test="${sessionScope.loginId == null}">
-								<li><a href="#">회원가입</a></li>
+								<li><a href="memberJoin.box">회원가입</a></li>
 								<li><a href="login.box">로그인</a></li>
 								<li><a href="mypage.box">마이페이지</a></li>
 							</c:if>
@@ -90,19 +90,81 @@
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container --> </nav>
+
+
+
+
+
+	<form id="joinform" name="joinform" action="/projectbox/MemberJoinAction.box" method="post">
+		<center>
+			<table border=1>
+				<tr>
+					<td colspan="2" align=center><b><font size=5>회원가입
+								페이지</font></b></td>
+				</tr>
+				<tr>
+					<td>아 이 디 </td>
+					<td><input type="text" id="MEMBER_ID" name="MEMBER_ID" maxlength=15 /> 
+					<input type=button	value="중복검사" id="idcheck" /></td>
+				</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" id="MEMBER_PW1" name="MEMBER_PW1" maxlength=15/></td>
+				</tr>
+				<tr>
+					<td>비밀번호 확인 :</td>
+					<td><input type="password" id="MEMBER_PW2" name="MEMBER_PW2" maxlength=15/> </td>
+				</tr>
+				<tr>
+					<td>이    름</td>
+					<td><input type="text" id="MEMBER_NAME" name="MEMBER_NAME" /></td>
+				</tr>
+				<tr>
+					<td>이메일 주소</td>
+					<td><input type=text id="MEMBER_Email1" name="MEMBER_Email1" />@ 
+					    <input type=text id=MEMBER_Email2 name=MEMBER_Email2 /> 
+						<select name=sel id=sel>
+							<option value="">직접입력</option>
+							<option value="naver.com">naver.com</option>
+							<option value="daum.net">daum.net</option>
+							<option value="nate.com">nate.com</option>
+							<option value="gmail.com">gmail.com</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>성     별 </td>
+					<td><input type="radio" name="MEMBER_GENDER" id="male"
+						value="남" checked />남자 <input type="radio" name="MEMBER_GENDER"
+						id="female" value="여" />여자</td>
+				<tr>
+					<td>전화번호</td>
+					<td><select id="MEMBER_PHONE1" name="MEMBER_PHONE1" ">
+							<option value="">번호선택</option>
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+							<option value="018">018</option>
+					</select>- 
+					<input type="text" id="MEMBER_PHONE2" name="MEMBER_PHONE2" maxlength=4 size=4  />- 
+					<input type="text" id="MEMBER_PHONE3" name="MEMBER_PHONE3" maxlength=4 size=4 /></td>
+				</tr>
+					<td>나    이</td>
+					<td><input type="text" id="MEMBER_AGE" name="MEMBER_AGE" maxlength=2 size=5 /></td>
+				<tr>
+					<td colspan="2" align=center>
+						<input type="submit" value="회원가입">&nbsp;&nbsp;
+						<input type="reset" value="다시작성">
+					</td>
+				</tr>
+			</table>
+		</center>
+	</form>
+
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- Footer -->
+<!-- Footer -->
 		<footer>
 		<div class="row">
 			<div class="col-lg-12" style="font-size: 10px">
@@ -118,6 +180,5 @@
 	<!-- /.container -->
 
 </body>
-</html>
-	
+</html>	
 	

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,23 +24,56 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
 <!-- 구글맵 부트스트랩 -->
 <script src="http://maps.googleapis.com/maps/api/js"></script>
-<script>var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0Id8D7bkKotALpSG6e_q4LhgjP8cwpg8"
+  type="text/javascript"></script>
+  
+<!-- <script>
+var lat = '${concertdata.locationx}'
+var lon = '${concertdata.locationy}'
+function initialize() {
+  var mapProp = {
+	center:new google.maps.LatLng(lat, lon),	  
+//  center:new google.maps.LatLng(37.497975, 127.027506),
+    zoom:18,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);  
+}
+//google.maps.event.addDomListener(window, 'load', initialize);
+//}
+</script> -->
 
-function initialize(){	
-	var mapProp = { center:myCenter, zoom:5,
+<script>
+var lat = '${concertdata.locationx}'
+var lon = '${concertdata.locationy}'
+var myCenter=new google.maps.LatLng(lat, lon);
+var marker;
+//var divid = document.getElementById("map1");
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:18,
   mapTypeId:google.maps.MapTypeId.ROADMAP
   };
 
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-var marker=new google.maps.Marker({position:myCenter, });
-marker.setMap(map);}
+var marker=new google.maps.Marker({
+  position:myCenter,
+  animation:google.maps.Animation.BOUNCE
+  });
+
+marker.setMap(map);
+}
 
 google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(divid, 'click', initialize());
 </script>
-
 	
 	
 <!-- 유효성검사 -->
@@ -60,6 +94,10 @@ function getRequest() {
     }
 }
 
+
+
+
+
 $(document).ready(function() {
 	  var get = getRequest();
 	  var param = get['param'];
@@ -73,22 +111,26 @@ $(document).ready(function() {
 		  $("#menu1").attr('class', 'tab-pane fade in active');
 	  }
 	  
-});
 
-$(document).ready(function(){
 	$("form").submit(function(){
 		if($("#content").val()==""){
 			alert("내용을 입력 하세요");
 			$("#content").focus();
 			return false;
 			}
-		});
-	
-	 
+		}); 	
 	
 	
+	$("#map1").click(function(){	
+//		alert('호출');
+		
+		initialize();
+		
+//		google.maps.event.addDomListener(window, 'load', initialize);
+		
 	});
 	
+});
  </script>
 
 <style type="text/css">
@@ -140,87 +182,99 @@ $(document).ready(function(){
 </head>
 <body>
 <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="main.box">BOX</a>
-                
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#portfolio">
-                        	<i class="fa fa-search" aria-hidden="true" style="font-size: 20px;"></i>
-						</a>
-                    </li>
-                    <li>
-                    <!-- <a>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="main.box">BOX</a>
+
+			<ul class="nav navbar-nav">
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#portfolio"> <i class="fa fa-search"
+						aria-hidden="true" style="font-size: 20px;"></i>
+				</a></li>
+				<li>
+					<!-- <a>
                     	<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
                    	</a> -->
-                      <div class="dropdown boxcenter">
-					    <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
-                   			<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
-                        </button>
-					    <span class="caret"></span></button>
-					    <ul class="dropdown-menu">
-					      <li><a href="#">회원가입</a></li>
-					      <li><a href="#">로그인</a></li>
-					      <li><a href="mypage.box">마이페이지</a></li>
-					    </ul>
-					  </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+					<div class="dropdown boxcenter">
+						<button class="btn btn-link dropdown-toggle" type="button"
+							data-toggle="dropdown">
+							<c:if test="${sessionScope.loginId == null}">
+								<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
+							</c:if>
+							<c:if test="${sessionScope.loginId != null}">
+								<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
+								<a href="#"><c:out value="${sessionScope.loginName}"/></a>
+							</c:if>
+						</button>
+						<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<c:if test="${sessionScope.loginId == null}">
+								<li><a href="#">회원가입</a></li>
+								<li><a href="login.box">로그인</a></li>
+								<li><a href="mypage.box">마이페이지</a></li>
+							</c:if>
+							<c:if test="${sessionScope.loginId != null}">
+								<li><a href="logoutAction.box">로그아웃</a></li>
+								<li><a href="mypage.box">마이페이지</a></li>
+							</c:if>
+							<%-- <li>${loginId}</li> --%>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container --> </nav>
 
 	<div class="container">
-		<h3>title</h3>
+		<h3>${concertdata.title}</h3>
 		<hr size="10">
 		
 		
 		<div class="image">
-			<img src="./jang.png" width="157" height="191" alt="title" />
+			<img src="./img/${concertdata.posterfilepath}" width="157" height="191" alt="title" />
 		</div>
 		
 		
 		<div class="info">
-			<b>장소</b>&nbsp;&nbsp;&nbsp;&nbsp;place<br> <br> 
-			<b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;startdate~enddate<br> <br>
-			<b>관람시간</b>&nbsp;&nbsp;&nbsp;&nbsp;showtime<br> <br>
+			<b>장소</b>&nbsp;&nbsp;&nbsp;&nbsp;${concertdata.place}<br> <br> 
+			<%-- <b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;${concertdata.startdate}~${concertdata.enddate}<br> <br> --%>
+			<b>기간</b>&nbsp;&nbsp;&nbsp;&nbsp;
+			<fmt:formatDate value="${concertdata.startdate}" pattern="yyyy-MM-dd"/>
+			~
+			<fmt:formatDate value="${concertdata.enddate}" pattern="yyyy-MM-dd"/><br> <br>
 			<b>가격</b> &nbsp;&nbsp;&nbsp;&nbsp;VIP석 : 30,000원 <br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R석 : 10,000원<br><br>
-			<button type="button" class="btn btn-default">예매하기</button>
-			<button type="button" class="btn btn-gray">취소</button>
+			<a class="btn btn-default" href="/projectbox/ConcertTicket.box">예매하기</a>
+			<a class="btn btn-gray" href="/projectbox/main.box">취소</a>
+			
 		</div>
 		
 		
 		<ul class="nav nav-tabs">
 			<li id="first"><a data-toggle="tab" href="#menu1"><b>상세정보</b></a></li>
 			<li id="second" ><a data-toggle="tab" href="#menu2"><b>관람후기</b></a></li>
-			<li><a data-toggle="tab" href="#menu3"><b>공연장위치</b></a></li>
+			<li id="map1"><a data-toggle="tab" href="#menu3"><b>공연장위치</b></a></li>
 			<li><a data-toggle="tab" href="#menu4"><b>티켓취소/환불</b></a></li>
 		</ul>
 
@@ -228,7 +282,7 @@ $(document).ready(function(){
 		<div class="tab-content">		
 			<div id="menu1" class="tab-pane fade">	<!-- 상세정보 -->									
 					<br><b>공연시간</b><br>
-					<p>showtime</p><br>
+					<p>${concertdata.showtime}</p><br>
 					<b>할인정보</b><br>
 					<p>휴가철 막바지 세일 - 20% 할인</p><br>
 					<b>공연관련정보</b><br> <br>
@@ -241,9 +295,9 @@ $(document).ready(function(){
 						</tr>
 						<tr align=center>
 							<td>주연</td>
-							<td>artist</td>
+							<td>${concertdata.artist}</td>
 							<td>공연장소</td>
-							<td>place</td>
+							<td>${concertdata.place}</td>
 						</tr>
 						<tr align=center>
 							<td>예매수수료</td>
@@ -258,10 +312,9 @@ $(document).ready(function(){
 			<div id="menu2" class="tab-pane fade">		
 			
 		<br> <b>관람후기 보기</b><br> <br>
-		
-<form action="/Project/ConBoardAddAction.bo" method="post" name="conboardform">
-<input type="hidden" name="concertid" value="1"/>
-<input type="hidden" name="userid" value="toto" />
+<form action="/projectbox/ConBoardAddAction.box" method="post" name="conboardform">
+<input type="hidden" name="concertid" value="${concertdata.id}"/>
+<input type="hidden" name="userid" value="${sessionScope.loginId}" />
 <table align="center" valign="middle" border="0" width="550">
    <tr >
     <td >
@@ -278,75 +331,76 @@ $(document).ready(function(){
 
 
 <!-- 후기 리스트 출력-->
-<br><table align=center width=600 border="0" cellpadding="0" cellspacing="0">
+<br><table class="table table-bordered" align=center 
+            width=600 border="1" cellpadding="0" cellspacing="0">
 <!-- 레코드가 있으면 -->
 <c:if test="${!empty conboardlist}">
-<tr align="center" valign="middle">
-      
-				
-		<tr align="center" valign="middle">
-		<td style="font-size:8pt;" width="8%">
+<tr align="center" valign="middle">  
+		<td style="font-size:8pt; color: red;" width="8%">
 			<div align="center"><b>번호</b></div>
 		</td>
-		<td style="font-size:8pt;" width="10%">
+		<td style="font-size:8pt; color: red;" width="10%">
 			<div align="center"><b>아이디</b></div>
 		</td>
-		<td style="font-size:8pt;" width="50%">
+		<td style="font-size:8pt; color: red;" width="50%">
 			<div align="center"><b>관람후기</b></div>
 		</td>
-		<td style="font-size:8pt;" width="32%">
+		<td style="font-size:8pt; color: red;" width="32%">
 			<div align="center"><b>날짜</b></div>
 		</td>		
-		</tr>
+</tr>
 		
 		<!-- 화면 출력 번호 -->		
 	    <c:set var="num" value="${listcount-(page-1)*10}"/> 	
 	    <c:forEach var="c" items="${conboardlist}">	
 	    
 	    <!-- 번호 출력 부분 -->
-	    <tr align="center" valign="middle">
+ <tr align="center" valign="middle">
 		<td>		
 		<c:out value="${num}"/>				
 		<c:set var="num" value="${num-1}"/>					
 		</td>					
 		<td>${c.userid}		</td>
-		<td>${c.content}		</td>	
+		<td style="width:200px; overflow:hidden; word-break:break-all; text-overflow:ellipsis;">
+		${c.content}</td>
 		<td>${fn:substring(c.registerdate,0,16)}		
-		<a href="./ConBoardDeleteAction.bo?id=${c.id}&page=${page}">
+		<a href="./ConBoardDeleteAction.box?id=${c.id}&concertid=${c.concertid}">
+		
 			[삭제]</a>&nbsp;&nbsp;
-       </td>
-	  </tr>
+       </td>		  
+</tr>	
+	  </c:forEach>	
+	  	
 	
-	  </c:forEach>		
-	
-	<!-- 후기 페이지번호 출력 -->
+	<%-- <!-- 후기 페이지번호 출력 -->
 	<!-- 이전버튼 -->
-	<tr align=center height=20>
+<tr align=center height=20>
 		<td colspan=4>
 		<c:if test="${page <= 1 }">	[이전]&nbsp;	</c:if>
-			<c:if test="${page > 1 }">			
-				 <a href="./ConBoardList.bo?page=${page-1}">[이전]</a>&nbsp;
-			</c:if>
+		<c:if test="${page > 1 }">			
+				 <a href="./ConcertDetail.box?page=${page-1}&param=123&id=${concertdata.id}">[이전]</a>&nbsp;
+		</c:if>
     <!-- 현재페이지 -->
 			<c:forEach var="a" begin="${startpage}" end="${endpage}">
 				<c:if test="${a == page }">
 					[${a}]
 				</c:if>
 				<c:if test="${a != page }">
-					<a href="./ConBoardList.bo?page=${a}">[${a}]</a>&nbsp;
-				</c:if>
-			</c:forEach>
+					<a href="./ConcertDetail.box?page=${a}&param=123&id=${concertdata.id}">[${a}]</a>&nbsp;
+					</c:if>
+			</c:forEach> 
 	<!-- 다음버튼 -->	
 	      <c:if test="${page >= maxpage }">
 				[다음] 
 			</c:if>
 			<c:if test="${page < maxpage }">
-				<a href="./ConBoardList.bo?page=${page+1}">[다음]</a>
+				<a href="./ConcertDetail.box?page=${page+1}&param=123&id=${concertdata.id}">[다음]</a>
 			</c:if>
+	</td>
+	</tr> --%>
+	</c:if>
 	
 	
-    </c:if>
-
 <!-- 레코드가 없으면 -->
 	<c:if test="${empty conboardlist}">
 			<tr align="center" valign="middle">
@@ -365,7 +419,7 @@ $(document).ready(function(){
 					<br> <b>공연장 위치</b><br> <br>
 					<div id="googleMap" style="width:500px;height:380px;"></div>										
 					<br> <br>
-				</div>
+			</div>
 			
 			
 			

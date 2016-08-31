@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,10 +17,13 @@
 <!-- font awesome -->
 <link href="css/font-awesome.min.css" rel="stylesheet">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+
+</script>
+
 </head>
 <body>
 
@@ -69,7 +73,7 @@
 						</button>
 						<ul class="dropdown-menu">
 							<c:if test="${sessionScope.loginId == null}">
-								<li><a href="#">회원가입</a></li>
+								<li><a href="memberJoin.box">회원가입</a></li>
 								<li><a href="login.box">로그인</a></li>
 								<li><a href="mypage.box">마이페이지</a></li>
 							</c:if>
@@ -88,6 +92,24 @@
 	<!-- /.container --> </nav>
 
 	<div class="container">
+
+		<!-- 선호도 -->
+		<div>
+			<c:if test="${sessionScope.loginId != null}">
+				
+				<c:set var="count" value="${fn:length(preferencelist)}"/>
+				
+				<c:choose>
+					<c:when test="${count le 0}">
+				        <a href="PreferenceListAction.box">엇! 아직 선호도가 조사되지 않았습니다.</a>
+				    </c:when>
+				    <c:when test="${count le 5}">
+				        <a href="PreferenceListAction.box">엇! 아직 선호도가 조사가 부족합니다.</a>
+				    </c:when>
+				</c:choose>
+				
+			</c:if>
+		</div>
 
 		<!-- 최신곡 -->
 		<div class="row">
@@ -134,7 +156,7 @@
 				</h1>
 			</div>
 
-			<c:forEach var="b" items="${musiclist}">
+			<c:forEach var="b" items="${recommendedmusiclist}">
 				<div class="col-md-3 portfolio-item">
 					<a href="#"> <img class="img-responsive img-center"
 						src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="">
@@ -151,17 +173,16 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					추천공연 <small> <a href="#navigation-main"
+					추천공연 <small> <a href="ConcertList.box"
 						aria-label="Skip to main navigation"> <i class="fa fa-bars"
 							aria-hidden="true"></i>
 					</a>
 					</small>
 				</h1>
 			</div>
-
 			<c:forEach var="b" items="${concertlist}">
 				<div class="col-md-3 portfolio-item">
-					<a href="./ConcertDetail.box?id=${b.id}"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
+					<a href="/projectbox/ConcertDetail.box?id=${b.id}&page=1"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
 						<img class="img-responsive img-center"
 						src="<c:url value='/img/${b.posterfilepath}'/>" alt="">
 					</a>
