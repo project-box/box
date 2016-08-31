@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.box.db.BoxConcertBean;
 import net.box.db.BoxConcertDAOImpl;
@@ -14,8 +15,8 @@ import net.box.db.ConBoardDAOImpl;
 
 public class BoxConcertDetailAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-     	request.setCharacterEncoding("utf-8");
-			
+     	request.setCharacterEncoding("utf-8");     	
+     	
 		BoxConcertDAOImpl concertdao=new BoxConcertDAOImpl();
 		BoxConcertBean concertdata=new BoxConcertBean();
 		BoxUserBean userdata= new BoxUserBean();
@@ -33,7 +34,7 @@ public class BoxConcertDetailAction implements Action{
 		int listcount=conboarddao.getListCount(id); //�� ����Ʈ ���� �޾ƿ�		
 		
 		concertdata=concertdao.getConcertCont(id);
-		conboardlist = conboarddao.getConBoardList(page,id);		  	
+		conboardlist = conboarddao.getConBoardList(id);		  	
 			
 		
 		System.out.println("concertdata="+concertdata);		
@@ -49,9 +50,8 @@ public class BoxConcertDetailAction implements Action{
 	   		   	
 		request.setAttribute("concertdata", concertdata);
 		request.setAttribute("userdata", userdata);
-		request.setAttribute("page", page);
 		
-		int limit=10; 
+		/*int limit=10; 
 		
 		//총 페이지 수
  		int maxpage=(int)((double)listcount/limit+0.95); //0.95를 더해서 올림 처리
@@ -62,12 +62,14 @@ public class BoxConcertDetailAction implements Action{
  		//현재 페이지에 보여줄 마지막 페이지 수(10, 20, 30 등...)
 		int endpage = startpage+10-1;
 
- 		if(endpage> maxpage) endpage= maxpage;
+ 		if(endpage> maxpage) endpage= maxpage;*/
+		
+		
+ 		/*request.setAttribute("maxpage", maxpage); 
+ 		request.setAttribute("startpage", startpage); 
+ 		request.setAttribute("endpage", endpage); */
 		
 		request.setAttribute("page", page); 
- 		request.setAttribute("maxpage", maxpage); 
- 		request.setAttribute("startpage", startpage); 
- 		request.setAttribute("endpage", endpage); 
 		request.setAttribute("listcount",listcount); 
 		request.setAttribute("conboardlist", conboardlist);		
 		

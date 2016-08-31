@@ -60,13 +60,10 @@ public class ConBoardDAOImpl {
 	
 	
 	/* �ı� ��� */
-	public List<ConBoardBean> getConBoardList(int page, int id)	throws SQLException {
+	public List<ConBoardBean> getConBoardList(int id)	throws SQLException {
 		SqlSession session=null;
-		session = getSession();
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map.put("page",page);
-		map.put("id", id);		
-		List<ConBoardBean> list = session.selectList("conboard.conboard_list", map);
+		session = getSession();	
+		List<ConBoardBean> list = session.selectList("conboard.conboard_list", id);
 	    return list;
 	}
 	
