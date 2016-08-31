@@ -3,21 +3,9 @@ package net.box.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import net.box.db.BoxConcertBean;
-import net.box.db.BoxDAOImpl;
-import net.box.db.BoxGeneralBoardBean;
-import net.box.db.BoxMusicBean;
-import net.box.action.ActionForward;
 import net.box.db.BoxNewconcertDAOImpl;
 
 public class BoxConcertListAction implements Action {
@@ -31,10 +19,10 @@ public class BoxConcertListAction implements Action {
 		if(request.getParameter("page") != null){
 			page=Integer.parseInt(request.getParameter("page"));
 		}
-		System.out.println("#1");
+		
 		int listcount=Newconcertdao.getListCount(); //총 리스트 수를 받아옴
 //		boardlist = boarddao.getBoardList(page,limit); //리스트를 받아옴
-		System.out.println("#2");
+		
 		Newconcertlist = Newconcertdao.getNewconcertList(page);
 		
 		//총 페이지 수
@@ -58,10 +46,6 @@ public class BoxConcertListAction implements Action {
 		request.setAttribute("Newconcertlist", Newconcertlist);		
 		
 		ActionForward forward = new ActionForward();
-		
-		// 1. DB 조회해서 추천공연 리스트 데이터 가져온다.
-		
-		// 2. request 객체에 조회한 데이터를 담는다.
 		
 		forward.setRedirect(false);
 		forward.setPath("./box/concert_list.jsp");
