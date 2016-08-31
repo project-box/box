@@ -34,7 +34,7 @@
 
 		<!-- 선호도 -->
 		<div>
-			<c:if test="${sessionScope.loginId != null}">
+			<%-- <c:if test="${sessionScope.loginId != null}">
 				<!--  -->
 			</c:if>
 			
@@ -50,7 +50,7 @@
 			    <c:when test="${count le 5}">
 			        <a href="PreferenceListAction.box">(임시메시지)엇! 아직 선호도가 조사가 부족합니다.</a>
 			    </c:when>
-			</c:choose>
+			</c:choose> --%>
 			
 		</div>
 
@@ -82,6 +82,8 @@
 		</div>
 
 		<br>
+		
+		<c:set var="count" value="${fn:length(preferencelist)}"/>
 		
 		<c:choose>
 				<c:when test="${sessionScope.loginId == null}">
