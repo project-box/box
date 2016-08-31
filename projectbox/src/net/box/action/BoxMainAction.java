@@ -28,7 +28,7 @@ import net.box.db.BoxDAOImpl;
 		request.setAttribute("concertlist", concertlist);
 		request.setAttribute("generalboardlist", generalboardlist);
 		
-		ActionForward forward= new ActionForward();
+		ActionForward forward= new ActionForward();		
 	 	forward.setRedirect(false);
  		forward.setPath("./box/main.jsp");
  		return forward;

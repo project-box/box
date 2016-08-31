@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -135,9 +136,9 @@
         <!-- 게시판 -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">게시판
+                <h1 class="page-header">자유 게시판
                     <small>
-                    	<a href="#navigation-main" aria-label="Skip to main navigation">
+                    	<a href="boardList.box" aria-label="Skip to main navigation">
 						  <i class="fa fa-bars" aria-hidden="true"></i>
 						</a>
 					</small>
@@ -150,7 +151,8 @@
 			        <th>번호</th>
 			        <th>제목</th>
 			        <th>이름</th>
-			        <th>등록일</th>			      
+			        <th>등록일</th>
+			        <th>조회수</th>			      
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -158,10 +160,14 @@
 				    	<tr>
 			            	<td><c:out value="${b.id}"/></td>
 			            	<td><a href="#">
-								<c:out value="${b.title}"/>
-							</a></td>
+								<c:out value="${b.title}"/></a>
+							</td>
 							<td><c:out value="${b.name}"/></td>
-							<td><c:out value="${b.registerdate}"/></td>
+							<td><%-- <c:out value="${b.registerdate}"/> --%>
+								<c:set var="now" value="${b.registerdate}" />
+								<fmt:formatDate value="${now}" type="date" />							
+							</td>
+							<td><c:out value="${b.readcount}"/></td>
 						</tr>
 					</c:forEach>
 			    </tbody>

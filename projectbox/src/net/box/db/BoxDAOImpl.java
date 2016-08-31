@@ -47,7 +47,9 @@ public class BoxDAOImpl {
 	public List<BoxGeneralBoardBean> getGeneralBoardList() throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<BoxGeneralBoardBean>  list = session.selectList("board.generalboard_list");
+		List<BoxGeneralBoardBean>  list = session.selectList("board.mainboard_list");
 	    return list;
 	}
+	
+	
 }
