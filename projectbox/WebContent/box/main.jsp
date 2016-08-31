@@ -18,6 +18,8 @@
 <!-- font awesome -->
 <link href="css/font-awesome.min.css" rel="stylesheet">
 
+<link href="css/main.css" rel="stylesheet">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -144,57 +146,99 @@
 			</c:forEach>
 		</div>
 
-
-
 		<br>
-
-		<!-- 추천곡 -->
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">
-					추천곡 <small> <a href="recommendMusicList.box" aria-label="Skip to main navigation" title="추천곡 전체 목록">
-					<i class="fa fa-bars" aria-hidden="true"></i>
-					</a>
-					</small>
-				</h1>
-			</div>
-
-			<c:forEach var="b" items="${recommendedmusiclist}">
-				<div class="col-md-3 portfolio-item">
-					<a href="#"> <img class="img-responsive img-center"
-						src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="">
-					</a>
-					<div class="well well-sm">
-						<c:out value="${b.title}" />
-						<br>
+		
+		<c:choose>
+				<c:when test="${sessionScope.loginId == null}">
+			        
+			        <div>
+			        	<div style=" float: left; ">
+			        		<img src="icon/music.png" class="con-img" alt="">
+						</div>
+						<div class="abc">
+							<code>
+					        box의 추천 컨텐츠 서비스는 로그인 후 사용 가능합니다.</code>
+						</div>
+		        	</div>
+			        
+					<div style="clear:left;">
+						<a href="login.box">로그인</a><br>
+			        	<a href="memberJoin.box">회원가입 하시겠습니까?</a><br>
+		        	</div>
+			        
+			    </c:when>
+			    <c:when test="${count le 5}">
+			        
+					<div>
+			        	<div style=" float: left; ">
+			        		<img src="icon/music.png" class="con-img" alt="">
+						</div>
+						<div class="abc">
+							<code>
+					        엇! 아직 선호도 조사가 부족합니다.
+							취향에 따른 최소 5개 이상의 음악을 선택하시면
+							이에 따른 컨텐츠를 추천해 드립니다.</code>
+						</div>
+		        	</div>
+		        	<div style="clear:left;">
+		        		<a href="PreferenceListAction.box">선호도 조사를 하시겠습니까? >></a>
+		        	</div>
+			        	
+			    </c:when>
+			    <c:otherwise>
+		           <!-- 추천곡 -->
+					<div class="row">
+						<div class="col-lg-12">
+							<h1 class="page-header">
+								추천곡 <small> <a href="recommendMusicList.box" aria-label="Skip to main navigation" title="추천곡 전체 목록">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+								</a>
+								</small>
+							</h1>
+						</div>
+						
+						<c:forEach var="b" items="${recommendedmusiclist}">
+							<div class="col-md-3 portfolio-item">
+								<a href="#"> <img class="img-responsive img-center"
+									src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="">
+								</a>
+								<div class="well well-sm">
+									<c:out value="${b.title}" />
+									<br>
+								</div>
+							</div>
+						</c:forEach>
+						
 					</div>
-				</div>
-			</c:forEach>
-		</div>
-
-		<!-- 추천공연 -->
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">
-					추천공연 <small> <a href="ConcertList.box" aria-label="Skip to main navigation" title="추천공연 전체 목록"> 
-					<i class="fa fa-bars" aria-hidden="true"></i>
-					</a>
-					</small>
-				</h1>
-			</div>
-			<c:forEach var="b" items="${recommendedconcertlist}">
-				<div class="col-md-3 portfolio-item">
-					<a href="/projectbox/ConcertDetail.box?id=${b.id}&page=1"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
-						<img class="img-responsive img-center"
-						src="<c:url value='/img/${b.posterfilepath}'/>" alt="">
-					</a>
-					<div class="well well-sm">
-						<c:out value="${b.title}" />
-						<br>
+			
+					<!-- 추천공연 -->
+					<div class="row">
+						<div class="col-lg-12">
+							<h1 class="page-header">
+								추천공연 <small> <a href="ConcertList.box" aria-label="Skip to main navigation" title="추천공연 전체 목록"> 
+								<i class="fa fa-bars" aria-hidden="true"></i>
+								</a>
+								</small>
+							</h1>
+						</div>
+						
+						<c:forEach var="b" items="${recommendedconcertlist}">
+							<div class="col-md-3 portfolio-item">
+								<a href="/projectbox/ConcertDetail.box?id=${b.id}&page=1"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
+									<img class="img-responsive img-center"
+									src="<c:url value='/img/${b.posterfilepath}'/>" alt="">
+								</a>
+								<div class="well well-sm">
+									<c:out value="${b.title}" />
+									<br>
+								</div>
+							</div>
+						</c:forEach>
+						
 					</div>
-				</div>
-			</c:forEach>
-		</div>
+		       </c:otherwise>
+			</c:choose>
+        
         
         <!-- 게시판 -->
         <div class="row">
