@@ -103,7 +103,7 @@
 
 
 
-<!-- Footer -->
+<!-- Footer  -->
         <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12">
