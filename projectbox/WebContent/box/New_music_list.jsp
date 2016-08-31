@@ -116,8 +116,8 @@
 		<!-- 레코드가 있으면 -->
 		
 		<c:if test="${listcount > 0 }">
-			<tr id="menu" align="center" valign="middle" bordercolor="#333333">
-				<td style="font-family: Tahoma; font-size: 11pt;"  width="8%" height="26" >
+			<tr id="menu" align="center" valign="top" bordercolor="#333333" style="font-weight: bold;">
+				<td style="font-family: Tahoma; font-size: 11pt;"  width="8%" height="30s" >
 					<div align="center">번호</div>
 				</td>
 				<td width="7%" height="26"> 
@@ -183,7 +183,7 @@
 			<%
 				//}// for end
 			%>
-				<tr align=center height=20>
+				<tr align=center valign=bottom height=40>
 					<td colspan=7 style="font-family: Tahoma; font-size: 10pt;">
 			<c:if test="${page <= 1 }">[이전]&nbsp;
 			</c:if> 
@@ -233,7 +233,7 @@
 <!-- Footer -->
 		<footer>
 		<div class="row">
-			<div class="col-lg-12" style="font-size: 10px" align="center">
+			<div class="col-lg-12" style="font-size: 11px" align="center">
 				<p>Copyright &copy; 2016 box Inc. 모든 권리 보유.</p>
 				<br>
 				<p>사업자등록번호 : 510-11-24601 | 통신판매업신고번호 : 제 2011-서울강남-00810호 |
