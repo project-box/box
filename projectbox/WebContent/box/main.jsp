@@ -20,9 +20,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script>
-
-</script>
 
 </head>
 <body>
@@ -125,8 +122,7 @@
 
 			<c:forEach var="b" items="${musiclist}">
 				<div class="col-md-3 portfolio-item">
-					<a href="#"> <!-- <img class="img-responsive" src="http://placehold.it/750x450" alt="" > -->
-
+					<a href="/projectbox/NewMusicList.box?id=${b.id}&page=1">
 						<img class="img-responsive img-center"
 						src="
 	                    <c:url value='/img/${b.albumcoverfilepath}'/>"
