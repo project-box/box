@@ -194,10 +194,13 @@
 		<%
 			//	}
 		%>
+		<c:if test="${users.id == dev}">
 		<tr align="right">
 			<td colspan="6"><a href="./NewmusicWrite.box">[글쓰기]</a></td>
 		</tr>
+		</c:if>
 	</table>
+	
     <!-- Footer -->
         <footer>
             <div class="row">

@@ -63,7 +63,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="main.box">BOX</a>
+			<a class="navbar-brand" href="/projectbox/main.box">BOX</a>
 
 			<ul class="nav navbar-nav">
 				<li><a href="#">About</a></li>

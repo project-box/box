@@ -5,6 +5,7 @@
 
 <mapper namespace="Newmusic">
 
+
 	<!-- 게시판 저장 -->
 	<insert id="music_insert" parameterType="music">
 		<!-- insert into	music(id,title,artist,Similarity,publishdate,genre,lyrics,album,albumcoverfilepath)

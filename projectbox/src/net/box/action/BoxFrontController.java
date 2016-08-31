@@ -26,12 +26,20 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 		System.out.println("RequestURI=" + RequestURI);
 		System.out.println("contextPath=" + contextPath);
 		System.out.println("command=" + command);
+		System.out.println("");
 
 		if (command.equals("/frontpage.box")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/qna_board_write.jsp");
+
+			// 메인 화면
+
 			/*
 			 * forward = new ActionForward(); forward.setRedirect(false);
 			 * forward.setPath("./board/qna_board_write.jsp");
 			 */
+			//github.com/project-box/box.git
 		} else if (command.equals("/main.box")) {
 			action = new BoxMainAction();
 			try {
@@ -39,8 +47,96 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
+			// 전체 게시판 목록
+		} else if (command.equals("/boardList.box")) {
+			action = new BoxBoardListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			// 게시판 상세 페이지
+		} else if (command.equals("/boardCont.box")) {
+			action = new BoxBoardContAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			// 게시판 글작성 폼
+		} else if (command.equals("/boardWrite.box")) {
+			forward = new ActionForward();
+			forward.setRedirect(true);
+			forward.setPath("./box/boardwrite.jsp");
+		}
+
+		// 게시판 글작성
+		else if (command.equals("/boardWritePro.box")) {
+			action = new BoxBoardWriteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		// 게시판 수정폼
+		else if (command.equals("/boardModify.box")) {
+			action = new BoxBoardModify();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		// 게시판 수정
+		else if (command.equals("/boardModifyAction.box")) {
+			action = new BoxBoardModifyAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		// 게시판 삭제폼
+		else if (command.equals("/boardDelete.box")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./box/boarddelete.jsp");
+		}
+
+		// 게시판 삭제
+		else if (command.equals("/boardDeleteAction.box")) {
+			action = new BoxBoardDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/loginAction.box")) {
+			action = new BoxLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		} else if (command.equals("/recommendMusicList.box")) {
 			action = new BoxRecommendMusicListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/BoxNewmusicAddAction.box")) {
+			action = new BoxNewmusicAddAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -55,8 +151,26 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
+
 				e.printStackTrace();
 			}
+
+		} else if (command.equals("/NewMusicList.box")) {
+			action = new BoxNewMusicListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/NewmusicDetailAction.box")) {
+			action = new BoxNewMusicDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		} else if (command.equals("/NewMusicList.box")) {
 			action = new BoxNewMusicListAction();
 			try {
@@ -65,6 +179,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 		} else if (command.equals("/NewmusicDetailAction.box")) {
+
 			action = new BoxNewMusicDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -81,13 +196,27 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			}
 
 		} else if (command.equals("/mypage.box")) {
+
 			forward = new ActionForward();
+
+			forward = new ActionForward();
+
 			forward.setRedirect(false);
 			forward.setPath("./box/mypage.jsp");
+
 		} else if (command.equals("/login.box")) {
 			forward = new ActionForward();
+
+		} else if (command.equals("/login.box")) {
+			forward = new ActionForward();
+
 			forward.setRedirect(false);
 			forward.setPath("./box/login.jsp");
+
+		} else if (command.equals("/NewmusicWrite.box")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./box/New_music_write.jsp");
 
 		} else if (command.equals("/loginAction.box")) {
 			action = new BoxLoginAction();
@@ -112,48 +241,44 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 		}
-			
-			/*예매하기 버튼 클릭*/
-			else if (command.equals("/ConcertTicket.box")) {
-				action = new ConcertTicketAction();
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-			
-		/*후기 저장*/
-		}else if (command.equals("/ConBoardAddAction.box")) {
+
+		/* 예매하기 버튼 클릭 */
+		else if (command.equals("/ConcertTicket.box")) {
+			action = new ConcertTicketAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			/* 후기 저장 */
+		} else if (command.equals("/ConBoardAddAction.box")) {
 			action = new ConBoardAddAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			
-	    /*후기 목록 출력
-		}else if (command.equals("/ConBoardList.box")) {
-			action = new ConBoardListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}*/
-			
-		/*후기 삭제*/
-		}else if (command.equals("/ConBoardDeleteAction.box")) {
+
+			/*
+			 * 후기 목록 출력 }else if (command.equals("/ConBoardList.box")) { action
+			 * = new ConBoardListAction(); try { forward =
+			 * action.execute(request, response); } catch (Exception e) {
+			 * e.printStackTrace(); }
+			 */
+
+			/* 후기 삭제 */
+		} else if (command.equals("/ConBoardDeleteAction.box")) {
 			action = new ConBoardDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-						
-		} else if(command.equals("/ConcertList.box")){
+
+		} else if (command.equals("/ConcertList.box")) {
 			action = new BoxConcertListAction();
 			try {
 				forward = action.execute(request, response);
@@ -167,7 +292,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/PreferenceAddAction.box")){
+		} else if (command.equals("/PreferenceAddAction.box")) {
 			action = new BoxPreferenceAddAction();
 			try {
 				forward = action.execute(request, response);
@@ -178,7 +303,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./box/joinForm.jsp");
-			
+
 		} else if (command.equals("/MemberJoinAction.box")) {
 			action = new JoinFormAction();
 			try {
@@ -193,7 +318,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			//회원관련 끝
+			// 회원관련 끝
 		}
 
 		if (forward != null) {
@@ -204,8 +329,10 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				dispatcher.forward(request, response);
 			}
 		}
-	}// doprocess()
-		// end
+
+
+	}// doprocess() end	
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -55,8 +55,12 @@ public class BoxDAOImpl {
 	public List<BoxGeneralBoardBean> getGeneralBoardList() throws SQLException {
 		SqlSession session = null;
 		session = getSession();
-		List<BoxGeneralBoardBean> list = session.selectList("board.generalboard_list");
-		return list;
+
+		List<BoxGeneralBoardBean>  list = session.selectList("board.mainboard_list");
+	    return list;
+
+//		List<BoxGeneralBoardBean> list = session.selectList("board.generalboard_list");
+//		return list;
 	}
 
 	/* 선호도 삽입 */
@@ -109,4 +113,6 @@ public class BoxDAOImpl {
 		session = getSession();
 		return (BoxUserBean) session.selectOne("box.user_info", userId);
 	}
+	
+	
 }

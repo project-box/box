@@ -37,23 +37,23 @@ public class BoxNewmusicDAOImpl {
 	}
 	
 	/* 게시판 저장 */
-	public void NewmusicInsert(BoxMusicBean musicBeen) {
+	public void NewmusicInsert(BoxMusicBean Newmusicdata) {
 		SqlSession session=null;
 		int result = 0;		
 		try{
 			session = getSession(); 
 			System.out.println("insert1");
 			
-			System.out.println("Title="+musicBeen.getTitle());
-			System.out.println("Artist="+musicBeen.getArtist());
-			System.out.println("similarity="+musicBeen.getSimilarity());
-			System.out.println("Genre="+musicBeen.getGenre());
-			System.out.println("Publishdate="+musicBeen.getPublishdate());
-			System.out.println("Album="+musicBeen.getAlbum());
-			System.out.println("lyrics="+musicBeen.getLyrics());
-			System.out.println("Albumcoverfilepath="+musicBeen.getAlbumcoverfilepath());			
+			System.out.println("Title="+Newmusicdata.getTitle());
+			System.out.println("Artist="+Newmusicdata.getArtist());
+			System.out.println("similarity="+Newmusicdata.getSimilarity());
+			System.out.println("Genre="+Newmusicdata.getGenre());
+			System.out.println("Publishdate="+Newmusicdata.getPublishdate());
+			System.out.println("Album="+Newmusicdata.getAlbum());
+			System.out.println("lyrics="+Newmusicdata.getLyrics());
+			System.out.println("Albumcoverfilepath="+Newmusicdata.getAlbumcoverfilepath());			
 			
-			result=session.insert("Newmusic.music_insert", musicBeen);
+			result=session.insert("Newmusic.music_insert", Newmusicdata);
 			System.out.println("result="+result);
 			
 		}catch(Exception e){
