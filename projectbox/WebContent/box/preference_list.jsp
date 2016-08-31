@@ -105,7 +105,20 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<ul class="nav navbar-nav">
-			<li>1122</li>
+			<li>
+				<div class="dropdown boxcenter">
+					<button class="btn btn-link dropdown-toggle" type="button"
+						data-toggle="dropdown">
+						<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
+					</button>
+					<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">등록 음악 삭제</a></li>
+						<li><a href="#">등록 음악 수정</a></li>
+					</ul>
+				</div>
+			</li>
 			<li><button type="button" onclick="initStars()" class="btn btn-default command-button">다시하기</button></li>
 		</ul>
 	
