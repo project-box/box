@@ -37,6 +37,7 @@ public class BoxMainAction implements Action {
 		request.setAttribute("concertlist", concertlist);
 		request.setAttribute("generalboardlist", generalboardlist);
 
+		
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginId") != null) {
 			// 선호도 조사
@@ -65,4 +66,7 @@ public class BoxMainAction implements Action {
 		forward.setPath("./box/main.jsp");
 		return forward;
 	}
-}
+ }
+
+
+		

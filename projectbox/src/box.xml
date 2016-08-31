@@ -33,7 +33,9 @@
 	<!-- 전체 게시글 목록 -->
 	<select id="generalboard_list" resultType="generalboard">
 	    <![CDATA[
-		select * from generalboard
+		select * from (select rownum rnum,id,userid,name,title,content,
+		readcount,registerdate from (select * from generalboard order by id desc )) 
+		where rnum <= 5
 		]]>
 	</select>
 	
