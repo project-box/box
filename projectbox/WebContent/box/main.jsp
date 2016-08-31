@@ -38,12 +38,12 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="main.box">BOX</a>
+			<a class="navbar-brand" href="main.box">b o x</a>
 
 			<ul class="nav navbar-nav">
-				<li><a href="#">About</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="NewMusicList.box">음악</a></li>
+				<li><a href="ConcertList.box">공연</a></li>
+				<li><a href="#">커뮤니티</a></li>
 			</ul>
 		</div>
 
@@ -96,28 +96,31 @@
 		<!-- 선호도 -->
 		<div>
 			<c:if test="${sessionScope.loginId != null}">
-				
-				<c:set var="count" value="${fn:length(preferencelist)}"/>
-				
-				<c:choose>
-					<c:when test="${count le 0}">
-				        <a href="PreferenceListAction.box">엇! 아직 선호도가 조사되지 않았습니다.</a>
-				    </c:when>
-				    <c:when test="${count le 5}">
-				        <a href="PreferenceListAction.box">엇! 아직 선호도가 조사가 부족합니다.</a>
-				    </c:when>
-				</c:choose>
-				
+				<!--  -->
 			</c:if>
+			
+			<c:set var="count" value="${fn:length(preferencelist)}"/>
+			
+			<c:choose>
+				<c:when test="${sessionScope.loginId == null}">
+			        <!--  -->
+			    </c:when>
+				<c:when test="${count le 0}">
+			        <a href="PreferenceListAction.box">(임시메시지)엇! 아직 선호도가 조사되지 않았습니다.</a>
+			    </c:when>
+			    <c:when test="${count le 5}">
+			        <a href="PreferenceListAction.box">(임시메시지)엇! 아직 선호도가 조사가 부족합니다.</a>
+			    </c:when>
+			</c:choose>
+			
 		</div>
 
 		<!-- 최신곡 -->
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					최신곡 <small> <a href="NewMusicList.box"
-						aria-label="Skip to main navigation"> <i class="fa fa-bars"
-							aria-hidden="true"></i>
+					최신곡 <small> <a href="NewMusicList.box" aria-label="Skip to main navigation" title="최신곡 전체 목록">
+					<i class="fa fa-bars" aria-hidden="true"></i>
 					</a>
 					</small>
 				</h1>
@@ -148,9 +151,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					추천곡 <small> <a href="recommendMusicList.box"
-						aria-label="Skip to main navigation"> <i class="fa fa-bars"
-							aria-hidden="true"></i>
+					추천곡 <small> <a href="recommendMusicList.box" aria-label="Skip to main navigation" title="추천곡 전체 목록">
+					<i class="fa fa-bars" aria-hidden="true"></i>
 					</a>
 					</small>
 				</h1>
@@ -173,9 +175,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					추천공연 <small> <a href="ConcertList.box"
-						aria-label="Skip to main navigation"> <i class="fa fa-bars"
-							aria-hidden="true"></i>
+					추천공연 <small> <a href="ConcertList.box" aria-label="Skip to main navigation" title="추천공연 전체 목록"> 
+					<i class="fa fa-bars" aria-hidden="true"></i>
 					</a>
 					</small>
 				</h1>
@@ -198,9 +199,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					게시판 <small> <a href="#navigation-main"
-						aria-label="Skip to main navigation"> <i class="fa fa-bars"
-							aria-hidden="true"></i>
+					게시판 <small> <a href="#navigation-main" aria-label="Skip to main navigation" title="커뮤니티"> 
+					<i class="fa fa-bars" aria-hidden="true"></i>
 					</a>
 					</small>
 				</h1>

@@ -13,7 +13,7 @@ public class BoxPreferenceListAction implements Action {
 
 		BoxDAOImpl boxdao = new BoxDAOImpl();
 
-		List<BoxMusicBean> musiclist = boxdao.getRecentMusicList(16);
+		List<BoxMusicBean> musiclist = boxdao.getRecentMusicList(50);
 		
 		request.setAttribute("musiclist", musiclist);
 
