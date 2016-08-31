@@ -24,25 +24,54 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
 <!-- 구글맵 부트스트랩 -->
 <script src="http://maps.googleapis.com/maps/api/js"></script>
-
-<script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0Id8D7bkKotALpSG6e_q4LhgjP8cwpg8"
+  type="text/javascript"></script>
+  
+<!-- <script>
+var lat = '${concertdata.locationx}'
+var lon = '${concertdata.locationy}'
 function initialize() {
- 	
-  var lat = ${concertdata.locationx};
-  var lon = ${concertdata.locationy};
   var mapProp = {
-//    center:new google.maps.LatLng(51.508742,-0.120850),
-    center:new google.maps.LatLng(lat,lon),
-    zoom:5,
+	center:new google.maps.LatLng(lat, lon),	  
+//  center:new google.maps.LatLng(37.497975, 127.027506),
+    zoom:18,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
-  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);  
 }
+//google.maps.event.addDomListener(window, 'load', initialize);
+//}
+</script> -->
+
+<script>
+var lat = '${concertdata.locationx}'
+var lon = '${concertdata.locationy}'
+var myCenter=new google.maps.LatLng(lat, lon);
+var marker;
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:18,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker=new google.maps.Marker({
+  position:myCenter,
+  animation:google.maps.Animation.BOUNCE
+  });
+
+marker.setMap(map);
+}
+
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
 	
 	
 <!-- 유효성검사 -->
@@ -80,9 +109,7 @@ $(document).ready(function() {
 		  $("#menu1").attr('class', 'tab-pane fade in active');
 	  }
 	  
-});
 
-$(document).ready(function(){
 	$("form").submit(function(){
 		if($("#content").val()==""){
 			alert("내용을 입력 하세요");
@@ -90,9 +117,16 @@ $(document).ready(function(){
 			return false;
 			}
 		}); 	
+	
+	
+	$("#map1").click(function(){	
+//		alert('호출');
+		initialize();	
+//		google.maps.event.addDomListener(window, 'load', initialize);
+		
 	});
 	
-
+});
  </script>
 
 <style type="text/css">
@@ -236,7 +270,7 @@ $(document).ready(function(){
 		<ul class="nav nav-tabs">
 			<li id="first"><a data-toggle="tab" href="#menu1"><b>상세정보</b></a></li>
 			<li id="second" ><a data-toggle="tab" href="#menu2"><b>관람후기</b></a></li>
-			<li><a data-toggle="tab" href="#menu3"><b>공연장위치</b></a></li>
+			<li id="map1"><a data-toggle="tab" href="#menu3"><b>공연장위치</b></a></li>
 			<li><a data-toggle="tab" href="#menu4"><b>티켓취소/환불</b></a></li>
 		</ul>
 
@@ -383,7 +417,7 @@ $(document).ready(function(){
 					<br> <b>공연장 위치</b><br> <br>
 					<div id="googleMap" style="width:500px;height:380px;"></div>										
 					<br> <br>
-				</div>
+			</div>
 			
 			
 			
