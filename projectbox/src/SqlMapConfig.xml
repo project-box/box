@@ -46,6 +46,7 @@
 		<mapper resource="box.xml" />
 		<mapper resource="board.xml" /> <!-- freeboard -->
 		<mapper resource="Newmusic.xml" />
+		<mapper resource="Newconcert.xml" />
 	</mappers>
 
 </configuration>

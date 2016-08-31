@@ -110,5 +110,5 @@ start with 1
 increment by 1
 nocache;
 
-select * from music;
+select * from tab;
 drop table music purge;
