@@ -51,6 +51,7 @@ public class BoxMainAction implements Action {
 				request.setAttribute("recommendedmusiclist", recommendedmusiclist);
 
 				// 추천공연
+				
 			} else {
 				// 디폴트 추천
 				
