@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.box.member.action.JoinFormAction;
+import net.box.member.action.MemberIdCheckAction;
+
 @WebServlet("*.box")
 public class BoxFrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 
@@ -171,8 +174,27 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/memberJoin.box")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./box/joinForm.jsp");
+			
+		} else if (command.equals("/MemberJoinAction.box")) {
+			action = new JoinFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/idCheck.box")) { // id 중복검사
+			action = new MemberIdCheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//회원관련 끝
 		}
-		
 
 		if (forward != null) {
 			if (forward.getRedirect()) { // true

@@ -30,6 +30,7 @@
 		<typeAlias type="net.box.db.BoxUserBean" alias="user" />
 		<typeAlias type="net.box.db.ConBoardBean" alias="conboard" />
 		<typeAlias type="net.box.db.BoxPreferenceBean" alias="preference" />
+		<typeAlias type="net.box.member.db.MemberBean" alias="member" />
 	</typeAliases>
 
 	<environments default="development">
@@ -50,6 +51,7 @@
 		<mapper resource="Newmusic.xml" />
 		<mapper resource="conboard.xml" />
 		<mapper resource="concert.xml" />
+		<mapper resource="Member.xml" />
 	</mappers>
 
 </configuration>
