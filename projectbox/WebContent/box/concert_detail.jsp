@@ -136,7 +136,7 @@ $(document).ready(function() {
 <style type="text/css">
 .image {
 	float: left;
-	margin: 20px; */
+	margin: 20px;
 }
 
 .info {

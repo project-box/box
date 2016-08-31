@@ -24,6 +24,31 @@
 
 </script>
 
+<style>
+  .btn-default {
+     color: #9d9d9d;
+  background-color: #222;
+   }
+   
+  .btn-default:hover {
+      background: #fff;
+      color: #000;
+   }
+   
+   .btn-group-vertical {
+	float: left;
+	margin: 20px;
+}
+
+   .table-striped {
+    float: center;
+    margin: 20px;
+   
+   }
+
+
+  </style>
+
 </head>
 <body>
 
@@ -91,15 +116,30 @@
 	</div>
 	<!-- /.container --> </nav>
 	
+	<div class="container">
 	
-	
-	
-	
-	
-	
-	
-	
-	
+   <div class="btn-group-vertical">   
+   <button type="button" class="btn btn-default" href=#><b>예매정보확인</b></button>
+   <button type="button" class="btn btn-default" href=#><b>회원정보수정</b></button>
+   <button type="button" class="btn btn-default" href=#><b>회원탈퇴</b></button>  
+  </div>	
+  
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>예매정보확인</th>        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>예매하신 내역이 없습니다.</td>       
+      </tr>      
+    </tbody>
+  </table>
+  
+  
+</div>
 	
 	
 	<!-- Footer -->
