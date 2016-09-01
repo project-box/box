@@ -6,12 +6,11 @@ pageEncoding="UTF-8"%>
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%-- <%@ include file= "/box/header.jsp" %> --%>
-<!-- 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
- -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%-- <%@ include file= "/box/header.jsp" %> --%>
+
 	<title>b o x</title>
 
 <script>
@@ -117,6 +116,7 @@ pageEncoding="UTF-8"%>
 						<option value="R&B">R&B
 						<option value="힙합/랩">힙합/랩
 						<option value="팝">팝
+						<option value="댄스">댄스
 						<option value="O.S.T">O.S.T
 				</select><br>
 			</tr>
