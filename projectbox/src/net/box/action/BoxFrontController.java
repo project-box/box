@@ -127,6 +127,14 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
+		} else if (command.equals("/logoutAction.box")) {
+			action = new BoxLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		} else if (command.equals("/recommendMusicList.box")) {
 			action = new BoxRecommendMusicListAction();
 			try {
@@ -146,6 +154,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./box/New_music_write.jsp");
+		
 		} else if (command.equals("/BoxNewmusicAddAction.box")) {
 			action = new BoxNewmusicAddAction();
 			try {
@@ -178,8 +187,8 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/NewmusicDetailAction.box")) {
-
 			action = new BoxNewMusicDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -187,7 +196,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
-		} else if (command.equals("/BoxNewMusicDetail.box")) {
+		} else if (command.equals("/NewMusicDetail.box")) {
 			action = new BoxNewMusicDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -205,11 +214,8 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			forward.setPath("./box/mypage.jsp");
 
 		} else if (command.equals("/login.box")) {
+			System.out.println("login.box 들어옴");
 			forward = new ActionForward();
-
-		} else if (command.equals("/login.box")) {
-			forward = new ActionForward();
-
 			forward.setRedirect(false);
 			forward.setPath("./box/login.jsp");
 
@@ -226,22 +232,22 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
-		} else if (command.equals("/logoutAction.box")) {
-			action = new BoxLogoutAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
+		// 컨서트 상세 페이지 요청	
 		} else if (command.equals("/ConcertDetail.box")) {
 			action = new BoxConcertDetailAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-
+			}			
+			
+		} else if(command.equals("/ConcertList.box")){
+			action = new BoxConcertListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}
 
 		/* 예매하기 버튼 클릭 */
@@ -278,20 +284,19 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 
-		} else if (command.equals("/ConcertList.box")) {
-			action = new BoxConcertListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+	
+
+			
 		} else if (command.equals("/PreferenceListAction.box")) {
 			action = new BoxPreferenceListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
+
 			}
+
+
 		} else if (command.equals("/PreferenceAddAction.box")) {
 			action = new BoxPreferenceAddAction();
 			try {
@@ -319,6 +324,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 			// 회원관련 끝
+
 		}
 
 		if (forward != null) {

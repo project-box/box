@@ -4,7 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>b o x</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>b o x</title>
 
 <!-- Bootstrap Core CSS -->
@@ -16,24 +20,14 @@
 <!-- font awesome -->
 <link href="css/font-awesome.min.css" rel="stylesheet">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="raty/jquery.raty.css" rel="stylesheet">
+<script src="raty/jquery.raty.js" type="text/javascript"></script>
 
-<!-- raty -->
-<link rel="stylesheet" href="raty/jquery.raty.css">
-<script src="raty/jquery.raty.js"></script>
-
-<link href="css/preference.css" rel="stylesheet" >
-
+<link href="css/preference.css" rel="stylesheet">
+    
 <script>
 	$(document).ready(function() {
-		$('.star').raty({
-			half : true,
-			starOff : 'raty/images/star-off.png',
-			starOn  : 'raty/images/star-on.png',
-			starHalf : 'raty/images/star-half.png',
-			hints : ['별로', '그럭저럭', '보통', '좋음', '최고']
-		});
+		initStars();
 	});
 	
 	function post(path, params, method) {
@@ -58,6 +52,16 @@
 
 	    document.body.appendChild(form);
 	    form.submit();
+	}
+	
+	function initStars(){
+		$('.star').raty({
+			half : true,
+			starOff : 'raty/images/star-off.png',
+			starOn  : 'raty/images/star-on.png',
+			starHalf : 'raty/images/star-half.png',
+			hints : ['별로', '그럭저럭', '보통', '좋음', '최고']
+		});
 	}
 	
 	function getStars(){
@@ -100,8 +104,26 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
+		<ul class="nav navbar-nav">
+			<li>
+				<div class="dropdown boxcenter">
+					<button class="btn btn-link dropdown-toggle" type="button"
+						data-toggle="dropdown">
+						<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
+					</button>
+					<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">등록 음악 삭제</a></li>
+						<li><a href="#">등록 음악 수정</a></li>
+					</ul>
+				</div>
+			</li>
+			<li><button type="button" onclick="initStars()" class="btn btn-default command-button">다시하기</button></li>
+		</ul>
+	
 		<ul class="nav navbar-nav navbar-right">
-			<li><button type="button" onclick="window.location='./main.box';" class="btn btn-default command-button">건너뛰기</button></li>
+			<li><button type="button" onclick="window.location='./main.box';" class="btn btn-default command-button">취소</button></li>
 			<li><button type="button" onClick="getStars()" class="btn btn-warning command-button">추천받기</button></li>
 		</ul>
 	</div>
@@ -138,5 +160,6 @@
 		</div>
 	</c:forEach>
 	
+	<%@ include file= "/box/footer.jsp" %>    
 </body>
 </html>

@@ -1,21 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ include file= "/box/header.jsp" %>
 
 <html>
 <head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%-- <%@ include file= "/box/header.jsp" %> --%>
+
 	<title>b o x</title>
 
- 	<!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/4-col-portfolio.css" rel="stylesheet">
-    
-    <!-- font awesome -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
 <script>
 	$(function() {
 		$("#publishdate").datepicker();
@@ -65,65 +62,6 @@
 </script>
 </head>
 <body>
-
-<!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="main.box">BOX</a>
-                
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#portfolio">
-                        	<i class="fa fa-search" aria-hidden="true" style="font-size: 20px;"></i>
-						</a>
-                    </li>
-                    <li>
-                    <!-- <a>
-                    	<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
-                   	</a> -->
-                      <div class="dropdown boxcenter">
-					    <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown">
-                   			<i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
-                        </button>
-					    <span class="caret"></span></button>
-					    <ul class="dropdown-menu">
-					      <li><a href="#">회원가입</a></li>
-					      <li><a href="login.box">로그인</a></li>
-					      <li><a href="mypage.box">마이페이지</a></li>
-					      <%-- <li>${loginId}</li> --%>
-					    </ul>
-					  </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
 <div class="container">
 
 <div class="row">
@@ -178,6 +116,7 @@
 						<option value="R&B">R&B
 						<option value="힙합/랩">힙합/랩
 						<option value="팝">팝
+						<option value="댄스">댄스
 						<option value="O.S.T">O.S.T
 				</select><br>
 			</tr>
@@ -209,10 +148,12 @@
 			</tr>
 			<tr align="center" valign="middle">
 				<td colspan="5"><input type=submit value="등록"> 
-				<input type=reset value="취소"></td>
+				<input type=reset value="취소" onclick="location.href='/projectbox/NewMusicList.box';"></td>
 			</tr>
 		</table>
 	</form>
+	
+<%@ include file= "/box/footer.jsp" %> 
 
 </body>
 </html>

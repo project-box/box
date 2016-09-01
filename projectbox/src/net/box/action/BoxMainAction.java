@@ -38,40 +38,35 @@ public class BoxMainAction implements Action {
 		request.setAttribute("generalboardlist", generalboardlist);
 
 		
-		ActionForward forward= new ActionForward();		
-	 	forward.setRedirect(false);
- 		forward.setPath("./box/main.jsp");
- 		return forward;
-	 }
+		HttpSession session = request.getSession();
+		if (session.getAttribute("loginId") != null) {
+			// 선호도 조사
+			String loginId = session.getAttribute("loginId").toString();
+			List<BoxPreferenceBean> preferencelist = boxdao.getPreferenceList(loginId);
+			request.setAttribute("preferencelist", preferencelist);
+
+			// 선호도가 없을 경우 추천곡, 추천공연을 가져오지 않음
+			if (preferencelist != null && preferencelist.size() > 0) {
+				// 추천곡
+				List<BoxMusicBean> recommendedmusiclist = boxdao.getRecommendedMusicList(preferencelist, 10);
+				request.setAttribute("recommendedmusiclist", recommendedmusiclist);
+
+				// 추천공연
+				List<BoxConcertBean> recommendedconcertlist = boxdao.getRecommendedConcertList(preferencelist, 10);
+				request.setAttribute("recommendedconcertlist", recommendedconcertlist);
+			} else {
+				// 디폴트 추천
+				
+				// ..
+			}
+		}
+
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false);
+		forward.setPath("./box/main.jsp");
+		return forward;
+	}
  }
 
 
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("loginId") != null) {
-//			// 선호도 조사
-//			String loginId = session.getAttribute("loginId").toString();
-//			List<BoxPreferenceBean> preferencelist = boxdao.getPreferenceList(loginId);
-//			request.setAttribute("preferencelist", preferencelist);
-//
-//			// 선호도가 없을 경우 추천곡, 추천공연을 가져오지 않음
-//			if (preferencelist != null && preferencelist.size() > 0) {
-//				// 추천곡
-//				List<BoxMusicBean> recommendedmusiclist = boxdao.getRecommendedMusicList(preferencelist, 10);
-//				request.setAttribute("recommendedmusiclist", recommendedmusiclist);
-//
-//				// 추천공연
-//				
-//			} else {
-//				// 디폴트 추천
-//				
-//				// ..
-//			}
-//		}
-//
-//		ActionForward forward = new ActionForward();
-//		forward.setRedirect(false);
-//		forward.setPath("./box/main.jsp");
-//		return forward;
-//	}
-//}
-
+		
