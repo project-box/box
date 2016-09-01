@@ -193,7 +193,7 @@
 				    <c:forEach var="b" items="${generalboardlist}">
 				    	<tr>
 			            	<td><c:out value="${b.id}"/></td>
-			            	<td><a href="#">
+			            	<td><a href="/projectbox/boardCont.box?id=${b.id}">
 								<c:out value="${b.title}"/></a>
 							</td>
 							<td><c:out value="${b.name}"/></td>
