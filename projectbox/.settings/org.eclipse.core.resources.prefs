@@ -1,10 +1,9 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/project-box/box.git
 eclipse.preferences.version=1
-<<<<<<< HEAD
-encoding/<project>=UTF-8
-=======
 encoding//src/net/box/action/BoxConcertDetailAction.java=UTF-8
 encoding//src/net/box/action/BoxMainAction.java=UTF-8
 encoding//src/net/box/db/ConBoardBean.java=UTF-8
 encoding/<project>=UTF-8
 encoding/src=UTF-8
->>>>>>> branch 'master' of https://github.com/project-box/box.git

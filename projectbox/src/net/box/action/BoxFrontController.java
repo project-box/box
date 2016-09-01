@@ -230,6 +230,25 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			
+			/*회원정보수정*/
+		} else if (command.equals("/MemberUpdate.box")) {
+			action = new BoxMemberUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			/*회원탈퇴*/
+		} else if (command.equals("/MemberDelete.box")) {
+			action = new BoxMemberDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
 
 		} else if (command.equals("/ConcertDetail.box")) {
 			action = new BoxConcertDetailAction();

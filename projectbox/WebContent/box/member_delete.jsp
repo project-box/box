@@ -141,22 +141,25 @@
   </div>
 </nav> 
  
- <div class="tap content">
+  <div class="tap content">
   <table class="table table-striped">
     <thead>
       <tr align="center">
-        <th>예매정보확인</th>        
+        <th>회원탈퇴</th>        
       </tr>
     </thead>
     <tbody>
       <tr align="center" valign="middle" height="200px">
-        <td><br><br><br>예매하신 내역이 없습니다.</td>       
+        <td><br><br><br>탈퇴</td>       
       </tr>      
     </tbody>
   </table>
   </div>
   
 	</div>
+	
+	
+	
 	
 	<!-- Footer -->
 		<footer>
@@ -175,5 +178,3 @@
 
 </body>
 </html>
-	
-	
