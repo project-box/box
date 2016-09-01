@@ -126,7 +126,7 @@
 						
 						<c:forEach var="b" items="${recommendedmusiclist}">
 							<div class="col-md-3 portfolio-item">
-								<a href="#"> <img class="img-responsive img-center"
+								<a href="./NewmusicDetailAction.box?num=${b.id}"> <img class="img-responsive img-center"
 									src="<c:url value='/img/${b.albumcoverfilepath}'/>" alt="">
 								</a>
 								<div class="well well-sm">
