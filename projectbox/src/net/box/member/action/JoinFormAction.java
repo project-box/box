@@ -51,7 +51,8 @@ public class JoinFormAction implements Action{
 	   		session.setAttribute("loginName", member.getName());
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./main.box");
+	   		//forward.setPath("./main.box");
+	   	    forward.setPath("./PreferenceListAction.box");
 	   		return forward;
 	}
 }
