@@ -7,18 +7,8 @@
 
 <%@ include file= "/box/header.jsp" %>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>b o x</title>
 
- 	<!-- Bootstrap Core CSS -->
-    <link href="/projectbox/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/projectbox/css/4-col-portfolio.css" rel="stylesheet">
-    
-    <!-- font awesome -->
-    <link href="/projectbox/css/font-awesome.min.css" rel="stylesheet">
-    
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     

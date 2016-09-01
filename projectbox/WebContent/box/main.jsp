@@ -9,23 +9,9 @@
 
 <%@ include file= "/box/header.jsp" %>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>b o x</title>
 
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="css/4-col-portfolio.css" rel="stylesheet">
-
-<!-- font awesome -->
-<link href="css/font-awesome.min.css" rel="stylesheet">
-
 <link href="css/main.css" rel="stylesheet">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
 </head>
 <body>
