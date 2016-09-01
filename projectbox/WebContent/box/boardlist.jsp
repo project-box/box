@@ -142,7 +142,7 @@
         </div>
 
 <div style="margin:auto; width:13%; float:right">
-	<a href="./boardWrite.box">
+	<a href="/projectbox/boardWrite.box">
 		<img src="/projectbox/img/write-1.jpg" id="write" width="70px">
 	</a>
 </div>
