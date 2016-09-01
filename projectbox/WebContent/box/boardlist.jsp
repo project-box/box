@@ -24,10 +24,8 @@
     		/* if(){
     			
     		}else{
-    			
-    		} */   
-    		
-    		location.href="boardWrite.box";
+    			location.href="boardWrite.box";
+    		}    */ 	
     		
     	});	
     });   
@@ -141,11 +139,25 @@
           
         </div>
 
-<div style="margin:auto; width:13%; float:right">
-	<a href="/projectbox/boardWrite.box">
-		<img src="/projectbox/img/write-1.jpg" id="write" width="70px">
-	</a>
-</div>
+
+
+	<!-- 로그인 전 -->
+	<c:if test="${sessionScope.loginId == null}">
+		<div style="margin:auto; width:13%; float:right">
+			<img src="/projectbox/img/write-1.jpg" id="write" width="70px" onClick="alert('로그인 하셔야 글작성 할 수 있습니다')">
+		</div>
+	</c:if>
+
+	<!-- 로그인 후 -->
+    <c:if test="${sessionScope.loginId != null}">
+		<div style="margin:auto; width:13%; float:right">
+			<a href="/projectbox/boardWrite.box">
+				<img src="/projectbox/img/write-1.jpg" id="write" width="70px">
+			</a>
+		</div>
+	</c:if>
+	
+
 
 <%@ include file= "/box/footer.jsp" %>    
 

@@ -31,12 +31,12 @@
                 </h1>
             </div>            
             
-            <%
-            	String userid = (String)session.getAttribute("loginId");
-            %>
+            <%--
+            	String userid = (String)session.getAttribute("loginId");            
+            --%>
             
            <form method="post" action="/projectbox/boardWritePro.box">
-           		<input type="hidden" name="userid" value="<%=userid%>">
+           		<input type="hidden" name="userid" value="${sessionScope.loginId}">
             <table class="table table-striped" style="margin: auto; width: 40%;">			  
 			      <tr><th>이름: <input type=text id="name" name="name"></th></tr>			       
 			      <tr><th>제목: <input type=text id="title" name="title"></th></tr>			        

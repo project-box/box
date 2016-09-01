@@ -67,13 +67,31 @@
     	<img src="/projectbox/img/list.jpg" width="70px"
     		onClick="location.href='/projectbox/boardList.box'">
     
-    	<!-- 수정 -->
-		<img src="/projectbox/img/change.jpg" width="70px"
+    	<!-- 로그인 안한상태 수정 -->
+    	<c:if test="${sessionScope.loginId == null}">
+    		<img src="/projectbox/img/change.jpg" width="70px"
+				onClick="alert('로그인 해야만 수정할 수 있습니다.')">
+		</c:if>
+    	
+    	<!-- 로그인 안한상태 수정 -->
+    	<c:if test="${sessionScope.loginId != null}">
+    		<img src="/projectbox/img/change.jpg" width="70px"
 			onClick="location.href='/projectbox/boardModify.box?id=${boarddata.id}&page=${page}'">
+    	</c:if>    	    	
 		
-		<!-- 삭제 -->		
-		<img src="/projectbox/img/remove.jpg" width="70px" 
-			onClick="location.href='/projectbox/boardDelete.box?id=${boarddata.id}&page=${page}'">	   
+		
+		<!-- 로그인 안한상태 삭제 -->	
+		<c:if test="${sessionScope.loginId == null}">
+			<img src="/projectbox/img/remove.jpg" width="70px" 
+				onClick="alert('로그인 해야만 삭제할 수 있습니다.')">
+		</c:if>
+		
+		<!-- 로그인 안한상태 수정 -->
+    	<c:if test="${sessionScope.loginId != null}">
+    		<img src="/projectbox/img/remove.jpg" width="70px" 
+			onClick="location.href='/projectbox/boardDelete.box?id=${boarddata.id}&page=${page}'">
+    	</c:if>	
+			   
 	</div> 
         
 
