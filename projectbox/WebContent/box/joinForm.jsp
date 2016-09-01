@@ -10,6 +10,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>b o x</title>
 
+<!-- 
+아래처럼 부트스트랩과 스크립트를 포함시키면 드롭다운 박스가 뜨지 않는다. 왜그럴까.. 모르겠다.. 
+ -상오 2016-09-01- 
+ -->
+
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
