@@ -30,30 +30,7 @@
 
 </head>
 <body>
-	<div>
-		<table class="table table-striped" style="margin: auto; width: 60%;">
-
-			<form action="/projectbox/boardDeleteAction.box" method="post">
-				<input type="hidden" name="id" value="${param.id}"> <input
-					type=hidden name=page value="${param.page}">
-
-				<tr>
-					<td><font size=2>글 비밀번호 : </font></td>
-					<td><input name="password" id="password" type="password">
-					</td>
-				</tr>
-				<tr align=center valign="middle">
-					<td colspan=2>
-						<!-- 삭제 --> <input type="image" src="/projectbox/img/remove.jpg"
-						width="70px" id="del"> <!-- 취소 --> <input type="image"
-						src="/projectbox/img/cancel.jpg" width="70px"
-						onClick="history.go(-1)"> <!-- <image src="/projectbox/img/cancel.jpg" width="70px" onClick="history.go(-1)"/> -->
-
-					</td>
-				</tr>
-
-			</form>
-
+			
 
 <div>
 <table class="table table-striped" style="margin: auto; width: 60%;">
@@ -92,18 +69,18 @@
 
 
 <!-- Footer -->
-        <footer style="text-align:center">
+        <!-- <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; designed by box 2016 </p>
                 </div>
             </div>
-            <!-- /.row -->
+            /.row
         </footer>
 
 		</table>
 
-	</div>
+	</div> -->
 
 	<%@ include file="/box/footer.jsp"%>
 </body>

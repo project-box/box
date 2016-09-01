@@ -65,15 +65,15 @@
 
 
 <!-- Footer  -->
-        <footer style="text-align:center">
+        <!-- <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; designed by box 2016 </p>
                 </div>
             </div>
-            <!-- /.row -->
+            /.row
         </footer>
-	</div>
+	</div> -->
     <!-- /.container -->
 	
 

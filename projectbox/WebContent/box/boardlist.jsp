@@ -75,12 +75,9 @@
 								<c:out value="${b.title}"/></a>
 							</td>
 							<td><c:out value="${b.name}"/></td>
-							<td>
-							
-<c:set var="now" value="${b.registerdate}" />
-<fmt:formatDate value="${now}" type="date" /> <br>							
-							
-							
+							<td>							
+								<c:set var="now" value="${b.registerdate}" />
+								<fmt:formatDate value="${now}" type="date" /> <br>							
 							</td>
 							<td><c:out value="${b.readcount}"/></td>
 						</tr>
@@ -145,7 +142,9 @@
         </div>
 
 <div style="margin:auto; width:13%; float:right">
-	<img src="/projectbox/img/write-1.jpg" id="write" width="70px">
+	<a href="./boardWrite.box">
+		<img src="/projectbox/img/write-1.jpg" id="write" width="70px">
+	</a>
 </div>
 
 <%@ include file= "/box/footer.jsp" %>    
@@ -153,15 +152,15 @@
 
 
 <!-- Footer -->
-        <footer style="text-align:center">
+        <!-- <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; designed by box 2016 </p>
                 </div>
             </div>
-            <!-- /.row -->
+            /.row
         </footer>
-	</div>
+	</div> -->
     <!-- /.container -->
 	
 

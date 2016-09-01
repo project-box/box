@@ -225,7 +225,7 @@
 
 
 		<!--   Footer -->
-		<footer style="text-align:center">
+		<!-- <footer style="text-align:center">
 		<div class="row">
 			<div class="col-lg-12" style="font-size: 10px">
 				<p>Copyright &copy; 2016 box Inc. 모든 권리 보유.</p>
@@ -234,7 +234,7 @@
 					대표이사 : 마크장 | 주소 : 서울특별시 강남구 영동대로 517 아셈타워 39층 | 대표전화 : 02-6512-8000
 					| 팩스 : 02-6128-8000</p>
 			</div>
-		</div>
+		</div> -->
 		<!-- /.row --> </footer>
 	</div>
 	<!-- /.container -->

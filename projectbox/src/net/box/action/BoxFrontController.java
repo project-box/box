@@ -69,7 +69,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			// 게시판 글작성 폼
 		} else if (command.equals("/boardWrite.box")) {
 			forward = new ActionForward();
-			forward.setRedirect(true);
+			forward.setRedirect(false);
 			forward.setPath("./box/boardwrite.jsp");
 		}
 
