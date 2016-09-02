@@ -20,7 +20,31 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script>
+<!-- 
+/* 유효성검사 */ -->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+
+
+
+
+$(document).ready(function() {	
+
+	$("form").submit(function(){
+		if($("#id").val()==""){
+			alert("아이디를 입력 하세요");
+			$("#id").focus();
+			return false;
+			}
+		
+		else if($("#pass").val()==""){
+			alert("패스워드를 입력 하세요");
+			$("#pass").focus();
+			return false;
+			}
+		}); 	
+});
+
 
 </script>
 
@@ -123,7 +147,7 @@
     <table class="table table-bordered">
 	<tr>
 	<td>
-	<h2 class="blind">&nbsp;&nbsp;&nbsp;마이페이지</h2>
+	<h2 class="blind">&nbsp;&nbsp;&nbsp;My Page</h2>
 	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="name">${sessionScope.loginName}</strong>님의 멤버십 등급은 
 	<font style="color:navy;"><b>VIP</b></font>입니다.</p>
 	</td>
@@ -136,7 +160,7 @@
     <ul class="nav navbar-nav">
       <li><a href="/projectbox/mypage.box"><font color="white"><b>예매정보확인</b></font></a></li>
       <li><a href="/projectbox/MemberUpdate.box"><font color="white"><b>회원정보수정</b></font></a></li>
-      <li><a href="/projectbox/MemberDelete.box"><font color="white">회원탈퇴</b></font></a></li>
+      <li><a href="/projectbox/MemberDeleteForm.box"><font color="white">회원탈퇴</b></font></a></li>
     </ul>
   </div>
 </nav> 
@@ -149,9 +173,36 @@
       </tr>
     </thead>
     <tbody>
-      <tr align="center" valign="middle" height="200px">
-        <td><br><br><br>탈퇴</td>       
-      </tr>      
+      <tr valign="middle" height="200px">
+        <td>
+        <p style="font-size: 11px;">정확한 정보 확인을 위해 아이디와 패스워드를 입력해주세요.</p><br><br>
+     
+        <form action="/projectbox/MemberDelete.box" class="form-horizontal" method="post" name="deleteform">
+    <div class="form-group">
+      <label class="control-label col-sm-2">ID:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="inputid" id="id" placeholder="id">
+      </div>
+    </div>
+    
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" name="inputpass" id="pass" placeholder="password">
+      </div>
+    </div> 
+       
+       
+    <div class="form-group">        
+      <div align="center" class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">탈퇴하기</button>        
+      </div>
+    </div>
+    
+    
+  </form>
+   </td></tr>  
     </tbody>
   </table>
   </div>

@@ -123,7 +123,7 @@
     <table class="table table-bordered">
 	<tr>
 	<td>
-	<h2 class="blind">&nbsp;&nbsp;&nbsp;마이페이지</h2>
+	<h2 class="blind">&nbsp;&nbsp;&nbsp;My Page</h2>
 	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="name">${sessionScope.loginName}</strong>님의 멤버십 등급은 
 	<font style="color:navy;"><b>VIP</b></font>입니다.</p>
 	</td>
@@ -136,7 +136,7 @@
     <ul class="nav navbar-nav">
       <li><a href="/projectbox/mypage.box"><font color="white"><b>예매정보확인</b></font></a></li>
       <li><a href="/projectbox/MemberUpdate.box"><font color="white"><b>회원정보수정</b></font></a></li>
-      <li><a href="/projectbox/MemberDelete.box"><font color="white">회원탈퇴</b></font></a></li>
+      <li><a href="/projectbox/MemberDeleteForm.box"><font color="white">회원탈퇴</b></font></a></li>
     </ul>
   </div>
 </nav> 

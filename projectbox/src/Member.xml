@@ -11,6 +11,32 @@
 		 values(#{id},#{password},#{name},#{email},#{gender},#{phone},#{age},0)	
 	</insert>
 	
+	<!-- 회원탈퇴 -->
+	
+	<delete id="preference_del" parameterType="String">	
+	delete from users where userid=#{inputid}	
+	</delete>		
+	
+	<delete id="generalboard_del" parameterType="String">
+	delete from users where userid=#{inputid}	
+	</delete>
+	
+	<delete id="concerboard_del" parameterType="String">
+	delete from users where userid=#{inputid}	
+	</delete>
+	
+	<delete id="member_del" parameterType="String">
+	delete from users where id=#{inputid}	
+	</delete>
+	
+	
+	
+		
+	
+	
+	
+	
+	
 	<select id="list" resultType="member">
 		select * from users
 	</select>

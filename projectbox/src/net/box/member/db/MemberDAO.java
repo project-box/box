@@ -133,5 +133,14 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
+	public void MemberDelete(String inputid) throws SQLException {
+		SqlSession session=null;
+		session = getSession();
+		session.delete("member.member_del", inputid);
+	}
+	
+	
+	
 
 }

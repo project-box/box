@@ -8,7 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.box.member.action.BoxMemberDeleteAction;
+import net.box.member.action.BoxMemberUpdateAction;
 import net.box.member.action.JoinFormAction;
+import net.box.member.action.MemberDeleteFormAction;
 import net.box.member.action.MemberIdCheckAction;
 
 @WebServlet("*.box")
@@ -126,7 +129,7 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+			
 		} else if (command.equals("/recommendMusicList.box")) {
 			action = new BoxRecommendMusicListAction();
 			try {
@@ -241,8 +244,17 @@ public class BoxFrontController extends javax.servlet.http.HttpServlet implement
 				e.printStackTrace();
 			}
 			
-			/*회원탈퇴*/
-		} else if (command.equals("/MemberDelete.box")) {
+			/*회원탈퇴 폼*/
+		} else if (command.equals("/MemberDeleteForm.box")) {
+			action = new MemberDeleteFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}/*회원탈퇴*/
+		 else if (command.equals("/MemberDelete.box")) {
 			action = new BoxMemberDeleteAction();
 			try {
 				forward = action.execute(request, response);
