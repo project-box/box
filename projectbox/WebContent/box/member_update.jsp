@@ -136,7 +136,7 @@
     <ul class="nav navbar-nav">
       <li><a href="/projectbox/mypage.box"><font color="white"><b>예매정보확인</b></font></a></li>
       <li><a href="/projectbox/MemberUpdate.box"><font color="white"><b>회원정보수정</b></font></a></li>
-      <li><a href="/projectbox/MemberDeleteForm.box"><font color="white">회원탈퇴</b></font></a></li>
+      <li><a href="/projectbox/MemberDeleteForm.box"><font color="white"><b>회원탈퇴</b></font></a></li>
     </ul>
   </div>
 </nav> 
@@ -151,7 +151,7 @@
     </thead>
     <tbody>
       <tr align="center" valign="middle" height="200px">
-        <td><br><br><br>수정내역</td>       
+        <td><br><br><br>회원정보수정</td>       
       </tr>      
     </tbody>
   </table>

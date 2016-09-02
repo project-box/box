@@ -81,6 +81,5 @@ public class ConBoardDAOImpl {
 		SqlSession session=null;
 		session = getSession();
 		session.delete("conboard.conboard_del", id);
-	}
-	
+	}	
 }

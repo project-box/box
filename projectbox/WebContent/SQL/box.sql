@@ -12,6 +12,7 @@ drop sequence concertboard_seq;
 drop sequence generalboard_seq;
 
 select * from users;
+select * from GENERALBOARD;
 
 -- 사용자 테이블
 create table users(

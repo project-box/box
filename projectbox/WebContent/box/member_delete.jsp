@@ -26,11 +26,10 @@
 <script type="text/javascript">
 
 
-
-
 $(document).ready(function() {	
 
 	$("form").submit(function(){
+	
 		if($("#id").val()==""){
 			alert("아이디를 입력 하세요");
 			$("#id").focus();
@@ -42,6 +41,11 @@ $(document).ready(function() {
 			$("#pass").focus();
 			return false;
 			}
+		
+		else{ 
+			window.confirm("정말로 탈퇴하시겠습니까?")		
+		 }		
+		
 		}); 	
 });
 

@@ -134,11 +134,35 @@ public class MemberDAO {
 		return result;
 	}
 	
-	public void MemberDelete(String inputid) throws SQLException {
+	/*회원탈퇴*/
+	public void generalboard_Delete(String inputid) {
+		// TODO Auto-generated method stub
+		SqlSession session=null;
+		session = getSession();
+		session.delete("member.generalboard_del", inputid);
+	}
+	
+	public void conboard_Delete(String inputid) throws SQLException {
+		SqlSession session=null;
+		session = getSession();
+		session.delete("member.conboard_del", inputid);
+	}
+	
+	public void preference_Delete(String inputid) throws SQLException {
+		SqlSession session=null;
+		session = getSession();
+		session.delete("member.preference_del", inputid);
+	}
+	
+	public void Member_Delete(String inputid) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		session.delete("member.member_del", inputid);
 	}
+
+	
+	
+	
 	
 	
 	

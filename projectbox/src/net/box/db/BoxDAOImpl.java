@@ -76,6 +76,7 @@ public class BoxDAOImpl {
 		}
 		return result;
 	}
+	
 
 	/* 선호도 조회 */
 	public List<BoxPreferenceBean> getPreferenceList(String userId) throws SQLException {

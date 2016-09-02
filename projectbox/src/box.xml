@@ -55,6 +55,7 @@
 		]]>
 	</select>
 	
+	
 	<!-- 메인화면 추천곡 목록 -->
 	<select id="recommended_music_list" resultType="music" parameterType="HashMap">
 	   <![CDATA[

@@ -123,8 +123,10 @@ $(document).ready(function() {
 	
 	$("#map1").click(function(){	
 //		alert('호출');
+		setTimeout(function(){
+			initialize();
+		}, 180)
 		
-		initialize();
 		
 //		google.maps.event.addDomListener(window, 'load', initialize);
 		

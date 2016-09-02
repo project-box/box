@@ -63,7 +63,7 @@
 	<delete id="board_del" parameterType="int">
 		delete from generalboard where id=#{id}
 	</delete>
-
+	
 
 
 	<!-- 게시판 총게시물 수 -->
