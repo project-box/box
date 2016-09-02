@@ -116,6 +116,10 @@ start with 1
 increment by 1
 nocache;
 
+
+select * from tab;
+drop table music purge;
+
 select * from music;
 select * from concert;
 drop table music purge;

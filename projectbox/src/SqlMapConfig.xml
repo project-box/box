@@ -50,6 +50,7 @@
 		<mapper resource="board.xml" /> <!-- 자유 게시판 -->
 		<mapper resource="board.xml" /> <!-- freeboard -->
 		<mapper resource="Newmusic.xml" />
+		<mapper resource="Newconcert.xml" />
 		<mapper resource="conboard.xml" />
 		<mapper resource="concert.xml" />
 		<mapper resource="Member.xml" />

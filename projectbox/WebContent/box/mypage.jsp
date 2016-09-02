@@ -5,24 +5,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<%@ include file= "/box/header.jsp" %>
+
 <title>b o x</title>
-
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="css/4-col-portfolio.css" rel="stylesheet">
-
-<!-- font awesome -->
-<link href="css/font-awesome.min.css" rel="stylesheet">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script>
-
-</script>
 
 <style>
 
@@ -52,7 +38,8 @@
 </head>
 <body>
 
-	<!-- Navigation -->
+
+<%-- 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -106,7 +93,7 @@
 								<li><a href="logoutAction.box">로그아웃</a></li>
 								<li><a href="mypage.box">마이페이지</a></li>
 							</c:if>
-							<%-- <li>${loginId}</li> --%>
+							<li>${loginId}</li>
 						</ul>
 					</div>
 				</li>
@@ -114,8 +101,8 @@
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container --> </nav> 
-	
+	<!-- /.container --> </nav>  --%>
+
 	    
   <div class="container">  
   
@@ -172,6 +159,7 @@
 		<!-- /.row --> </footer>
 	</div>
 	<!-- /.container -->
+
 
 </body>
 </html>

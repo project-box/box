@@ -6,57 +6,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<%@ include file= "/box/header.jsp" %>
+
 	<title>b o x</title>
 
- 	<!-- Bootstrap Core CSS -->
-    <link href="/projectbox/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/projectbox/css/4-col-portfolio.css" rel="stylesheet">
-    
-    <!-- font awesome -->
-    <link href="/projectbox/css/font-awesome.min.css" rel="stylesheet">
-    
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>    
        
 </head>
-<body>
-	
-	<!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/projectbox/main.box">BOX</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    
-    
     
 <!-- 상세 페이지 -->
     
@@ -104,35 +62,57 @@
      </div> 
      
      
-    <div style="margin:auto; width:30%;">
+    <div style="margin:auto; width:20%;">
     	<!-- 목록 -->
     	<img src="/projectbox/img/list.jpg" width="70px"
     		onClick="location.href='/projectbox/boardList.box'">
     
-    	<!-- 수정 -->
-		<img src="/projectbox/img/change.jpg" width="70px"
+    	<!-- 로그인 안한상태 수정 -->
+    	<c:if test="${sessionScope.loginId == null}">
+    		<img src="/projectbox/img/change.jpg" width="70px"
+				onClick="alert('로그인 해야만 수정할 수 있습니다.')">
+		</c:if>
+    	
+    	<!-- 로그인 안한상태 수정 -->
+    	<c:if test="${sessionScope.loginId != null}">
+    		<img src="/projectbox/img/change.jpg" width="70px"
 			onClick="location.href='/projectbox/boardModify.box?id=${boarddata.id}&page=${page}'">
+    	</c:if>    	    	
 		
-		<!-- 삭제 -->		
-		<img src="/projectbox/img/remove.jpg" width="70px" 
-			onClick="location.href='/projectbox/boardDelete.box?id=${boarddata.id}&page=${page}'">	   
+		
+		<!-- 로그인 안한상태 삭제 -->	
+		<c:if test="${sessionScope.loginId == null}">
+			<img src="/projectbox/img/remove.jpg" width="70px" 
+				onClick="alert('로그인 해야만 삭제할 수 있습니다.')">
+		</c:if>
+		
+		<!-- 로그인 안한상태 수정 -->
+    	<c:if test="${sessionScope.loginId != null}">
+    		<img src="/projectbox/img/remove.jpg" width="70px" 
+			onClick="location.href='/projectbox/boardDelete.box?id=${boarddata.id}&page=${page}'">
+    	</c:if>	
+			   
 	</div> 
         
+
     
    
    
    
    <!-- Footer -->
-        <footer>
+        <!-- <footer style="text-align:center">
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; designed by box 2016 </p>
                 </div>
             </div>
-            <!-- /.row -->
+            /.row
         </footer>
-	</div>
+	</div> -->
     <!-- /.container -->
+
+<%@ include file= "/box/footer.jsp" %>       
+
 	
 </body>
 </html> 
